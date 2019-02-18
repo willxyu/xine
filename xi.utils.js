@@ -38,5 +38,5 @@ xi.rpad = function(str, len, ch) {
 xi.uniarr = function(arr) { var a = arr.concat(); for (var i = 0; i < a.length; ++i) {for (var j = i+1; j < a.length; ++j) { if (a[i] === a[j]) { a.splice(j--, 1) } } }; return a } // https://stackoverflow.com/a/1584377
 xi.uuid = function() {
   var d = new Date().getTime(); if (window.performance && typeof window.performance.now == 'function') { d += performance.now() };
-  var uid = 'xxxxx-xxx-4xx-yxx-xxxxxxxx'.replace(/[xy]/g, function(v) { var r = (d + Math.random() * 16 % 16 | 0; d = Math.floor(d / 16);
+  var uid = 'xxxxx-xxx-4xx-yxx-xxxxxxxx'.replace(/[xy]/g, function(v) { var r = (d + Math.random() * 16 % 16 || 0; d = Math.floor(d / 16);
   return (v == 'x' ? r : (r&0x3|0x8)).toString(16) }); return uid }
