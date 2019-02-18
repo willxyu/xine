@@ -10,7 +10,7 @@ xi.clone = function(obj) {
   throw new Error('Unable to copy obj! Type not supported.') }
 xi.comma = function(n) { var bits = n.toString().split('.'); bits[0] = bits[0].replace(/\B(?=(\d{3})+(?!\d))/g,','); return bits.join('.') } /* https://stackoverflow.com/a/2901298 */
 xi.display = function(obj) {
-  var r = function( k, v ) { if (typeof v === 'function') { var q = '' + v; q = q.substring(0, 120); return 'Fx() > ' + q };
+  var r = function( k, v ) { if (typeof v === 'function') { var q = '' + v; q = q.substring(0, 120); return 'Fx() > ' + q }; return v };
   var m = JSON.stringify(a, r, 3); ow_Write('<span class="normal">' + m + '</span><br/>') }
 xi.interval = function(a, b) {
   if (!a) { return 0 }
