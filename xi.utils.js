@@ -36,4 +36,11 @@ xi.rpad = function(str, len, ch) {
   if (typeof str == 'number') { str = str.toString() }; if (ch == null) { ch = ' ' };
   var r = len - str.length; if (r < 0) { r = 0 }; return str + ch.repeat(r) }
 xi.uniarr = function(arr) { var a = arr.concat(); for (var i = 0; i < a.length; ++i) {for (var j = i+1; j < a.length; ++j) { if (a[i] === a[j]) { a.splice(j--, 1) } } }; return a } // https://stackoverflow.com/a/1584377
-
+xi.uuid = function() {
+  var d = new Date().getTime()
+  if (window.performance && typeof window.performance.now === 'function') { d += performance.now() }
+  var uid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(v) {
+    var r = (d + Math.random() * 16) % 16 | 0
+    d = Math.floor(d / 16)
+    return (v == 'x' ? r : ( r&0x3|0x8)).toString(16) })
+  return uid }
