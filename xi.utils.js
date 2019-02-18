@@ -30,7 +30,7 @@ xi.key  = function(obj, val) { for (var prop in obj) { if (obj.hasOwnProperty(pr
 xi.lpad = function(str, len, ch) {
   if (typeof str == 'number') { str = str.toString() }; if (ch == null) { ch = ' ' };
   var r = len - str.length; if (r < 0) { r = 0 }; return ch.repeat(r) + str }
-xi.title= function(str) { return str.replace(/\w\S*g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) }
+xi.title= function(str) { return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) }
 xi.round= function(num, dec)  { var mult = 10 ^ (dec || 0); return Math.floor(num * mult + 0.5) / mult }
 xi.rpad = function(str, len, ch) {
   if (typeof str == 'number') { str = str.toString() }; if (ch == null) { ch = ' ' };
