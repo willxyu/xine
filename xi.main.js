@@ -23,7 +23,7 @@ xi.main.debug = function(msg, tier, masked) {
   var tier = tier
   if (typeof xi.opts.debugTier == 'number') { tier = xi.opts.debugTier }
   if (typeof tier == 'undefined') { tier = 3 }
-  if (xi.opts.debug && xi.opts.debug > tier) {
+  if (xi.opts.debug && tier > xi.opts.debug) {
    console.log(msg)
    if (xi.opts.vebug && !masked) { xi.write(msg) }
   }
@@ -41,9 +41,6 @@ xi.main.sequentialLoad = function() {
     p = p.then(function() {
       return $.ajax({ url: a + '?v=' + new Date().getTime() }).done(function(data) {
         xi.main.debug('Attempting eval(data) for ' + a + '.')
-        console.log(data)
-        console.log(eval)
-        console.log(eval(data))
         try {
           eval(data)
         } catch(err) {
