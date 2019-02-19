@@ -100,4 +100,14 @@ JSON.stringifyOnce = function(obj, replacer, indent){
 
 xi.utils.display = function(a) { var x = JSON.stringifyOnce(a, null, 3); print(x) }
 
+xi.utils.echo = function(test) {
+  var r   = function(a) { return a.charCodeAt(0) }
+  var str = test + '\r\n'
+      str = str.replace('+n', '\n')
+  var out = str.split('').map(r)
+      out.push(255)
+      out.push(249)
+  client.handle_read({data: out})
+}
+
 xiu = xi.utils
