@@ -1,9 +1,6 @@
 xi       = typeof xi       != 'undefined' ? xi       : {}
 xi.utils = typeof xi.utils != 'undefined' ? xi.utils : {}
 
-console.log('a')
-console.log(xi)
-
 xi.utils.clean = function(css) { if (typeof css != 'string') { return css }; var n = Number(css.replace(/[^-\d\.]/g,'')); return n }
 
 xi.utils.clone = function(obj) {
@@ -72,9 +69,11 @@ JSON.stringifyOnce = function(obj, replacer, indent){
     if (key == '') {
         printedObjects.push(obj); printedObjectKeys.push('root'); return value; 
     } else if (printedObjIndex + '' != 'false' && typeof value == 'object') {
-        return '(pointer to root)' 
-    } else {
-        return '(see '+ ((!!value && !!value.constructor) ? value.constructor.name.toLowerCase() : typeof value) + ' with key ' + printedObjectKeys[printedObjIndex] + ')'
+       if (printedObjectKeys[printedObjIndex] == 'root') {
+         return '(pointer to root)' 
+       } else {
+         return '(see '+ ((!!value && !!value.constructor) ? value.constructor.name.toLowerCase() : typeof value) + ' with key ' + printedObjectKeys[printedObjIndex] + ')'
+       }
     } else {
         var qualifiedKey = key || '(empty key)'
         printedObjects.push(value)
