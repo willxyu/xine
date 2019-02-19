@@ -73,7 +73,7 @@ JSON.stringifyOnce = function(obj, replacer, indent){
        var q = '' + value; q = 'F() ' + q.substring(0, 120) + '...' 
        printedObjects.push(q)
        printedObjectKeys.push(qualifiedKey)
-       if (replacer) { return replacer(key, value) } else { return value }
+       if (replacer) { return replacer(key, value) } else { return q }
     } else if (printedObjIndex + '' != 'false' && typeof value == 'object') {
        if (printedObjectKeys[printedObjIndex] == 'root') {
          return '(pointer to root)' 
