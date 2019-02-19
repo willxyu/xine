@@ -68,13 +68,17 @@ JSON.stringifyOnce = function(obj, replacer, indent){
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
     if (key == '') {
        var q = value
-       if (typeof value == 'function') { q = 'F() ' + (value + '').substring(0, 120) + '...' }
+       if (typeof value == 'function') {
+           q = 'F() ' + (value + '').substring(0, 120)
+           if ((value + '').length > 120) { q += '...' } }
        printedObjects.push(obj)
        printedObjectKeys.push('root')
        return q
     } else if (typeof value == 'function') {
        var qualifiedKey = key || '(empty key)'
-       var q = '' + value; q = 'F() ' + q.substring(0, 120) + '...' 
+       var q = '' + value
+           q = 'F() ' + q.substring(0, 120)
+       if (('' + value).length > 120) { q += '...' }
        printedObjects.push(q)
        printedObjectKeys.push(qualifiedKey)
        if (replacer) { return replacer(key, value) } else { return q }
