@@ -15,6 +15,10 @@ xi      = typeof xi      != 'undefined' ? xi      : {}
 xi.main = typeof xi.main != 'undefined' ? xi.main : {}
 xi.opts = typeof xi.opts != 'undefined' ? xi.opts : {}
 
+xi.opts.debugTier = 5 // default debug tier
+xi.opts.debug     = 3 // threshold (print any debug message above "3")
+xi.opts.vebug     = false
+
 xi.main.debug = function(msg, tier, masked) {
   var tier = tier
   if (typeof xi.opts.debugTier == 'number') { tier = xi.opts.debugTier }
