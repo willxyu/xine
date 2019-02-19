@@ -74,11 +74,16 @@ JSON.stringifyOnce = function(obj, replacer, indent){
        } else {
          return '(see '+ ((!!value && !!value.constructor) ? value.constructor.name.toLowerCase() : typeof value) + ' with key ' + printedObjectKeys[printedObjIndex] + ')'
        }
+    } else if (typeof value == 'function') {
+       var qualifiedKey = key || '(empty key)'
+       var q = '' + value; q = 'Fx() > ' + q.substring(0, 120) + '...' 
+       printedObjects.push(q)
+       printedObjectKeys.push(qualifiedKey)
     } else {
-        var qualifiedKey = key || '(empty key)'
-        printedObjects.push(value)
-        printedObjectKeys.push(qualifiedKey)
-        if (replacer) { return replacer(key, value) } else { return value }
+       var qualifiedKey = key || '(empty key)'
+       printedObjects.push(value)
+       printedObjectKeys.push(qualifiedKey)
+       if (replacer) { return replacer(key, value) } else { return value }
     }
   }
   return JSON.stringify(obj, printOnceReplacer, indent)
