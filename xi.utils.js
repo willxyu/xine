@@ -67,7 +67,11 @@ JSON.stringifyOnce = function(obj, replacer, indent){
     var printedObjIndex = false
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
     if (key == '') {
-        printedObjects.push(obj); printedObjectKeys.push('root'); return value; 
+       var q = value
+       if (typeof value == 'function') { q = 'F() ' + (value + '').substring(0, 120) + '...' }
+       printedObjects.push(obj)
+       printedObjectKeys.push('root')
+       return q
     } else if (typeof value == 'function') {
        var qualifiedKey = key || '(empty key)'
        var q = '' + value; q = 'F() ' + q.substring(0, 120) + '...' 
