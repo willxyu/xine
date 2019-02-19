@@ -63,9 +63,6 @@ JSON.stringifyOnce = function(obj, replacer, indent){
   var printedObjects    = []
   var printedObjectKeys = []
   function printOnceReplacer(key, value) {
-    console.log(key)
-    console.log(value)
-    console.log(typeof value)
     if (printedObjects.length > 5000){ return 'object too long'; }
     var printedObjIndex = false
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
@@ -73,22 +70,16 @@ JSON.stringifyOnce = function(obj, replacer, indent){
         printedObjects.push(obj); printedObjectKeys.push('root'); return value; 
     } else if (typeof value == 'function') {
        var qualifiedKey = key || '(empty key)'
-       var q = '' + value; q = 'Fx() > ' + q.substring(0, 120) + '...' 
-      console.log(q)
+       var q = '' + value; q = 'F() ' + q.substring(0, 120) + '...' 
        printedObjects.push(q)
        printedObjectKeys.push(qualifiedKey)
+       if (replacer) { return replacer(key, value) } else { return value }
     } else if (printedObjIndex + '' != 'false' && typeof value == 'object') {
        if (printedObjectKeys[printedObjIndex] == 'root') {
          return '(pointer to root)' 
        } else {
          return '(see '+ ((!!value && !!value.constructor) ? value.constructor.name.toLowerCase() : typeof value) + ' with key ' + printedObjectKeys[printedObjIndex] + ')'
        }
-    /*
-    } else if (typeof value == 'function') {
-       var qualifiedKey = key || '(empty key)'
-       var q = '' + value; q = 'Fx() > ' + q.substring(0, 120) + '...' 
-       printedObjects.push(q)
-       printedObjectKeys.push(qualifiedKey) */
     } else {
        var qualifiedKey = key || '(empty key)'
        printedObjects.push(value)
