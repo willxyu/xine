@@ -1,6 +1,9 @@
 xi       = typeof xi       != 'undefined' ? xi       : {}
 xi.utils = typeof xi.utils != 'undefined' ? xi.utils : {}
 
+console.log('a')
+console.log(xi)
+
 xi.utils.clean = function(css) { if (typeof css != 'string') { return css }; var n = Number(css.replace(/[^-\d\.]/g,'')); return n }
 
 xi.utils.clone = function(obj) {
