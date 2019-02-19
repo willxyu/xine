@@ -41,6 +41,7 @@ xi.main.sequentialLoad = function() {
     p = p.then(function() {
       return $.ajax({ url: a + '?v=' + new Date().getTime() }).done(function(data) {
         xi.main.debug('Attempting eval(data) for ' + a + '.')
+        console.log(data)
         try {
           eval(data)
         } catch(err) {
