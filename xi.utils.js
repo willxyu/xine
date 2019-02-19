@@ -63,7 +63,7 @@ JSON.stringifyOnce = function(obj, replacer, indent){
   var printedObjects    = []
   var printedObjectKeys = []
   function printOnceReplacer(key, value) {
-    if (printedObjects.length > 2000){ return 'object too long'; }
+    if (printedObjects.length > 5000){ return 'object too long'; }
     var printedObjIndex = false
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
     if (key == '') {
@@ -78,7 +78,7 @@ JSON.stringifyOnce = function(obj, replacer, indent){
         var qualifiedKey = key || '(empty key)'
         printedObjects.push(value)
         printedObjectKeys.push(qualifiedKey)
-        if (replacer) { return replacer(key, value) } else { return vale }
+        if (replacer) { return replacer(key, value) } else { return value }
     }
   }
   return JSON.stringify(obj, printOnceReplacer, indent)
