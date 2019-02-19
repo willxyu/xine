@@ -98,6 +98,6 @@ JSON.stringifyOnce = function(obj, replacer, indent){
   return JSON.stringify(obj, printOnceReplacer, indent)
 }
 
-xi.utils.display = function(a) { var x = JSON.stringifyOnce(a, null, 4); print(x) }
+xi.utils.display = function(a) { var x = JSON.stringifyOnce(a, null, 3); print(x) }
 
 xiu = xi.utils
