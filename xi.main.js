@@ -54,7 +54,6 @@ xi.main.sequentialLoad = function() {
 xi.main.initiate = function() {
   var c = client
   if (client.package_exists("xine") != 0) { client.package_remove("xine") }
-  console.log('sdf')
   xi.main.sequentialLoad()
   if (client.package_exists("xine") != 0) { client.send_direct("xine") }
   if (client.package_exists("xine custom") != 0) { client.send_direct("xine custom") }
