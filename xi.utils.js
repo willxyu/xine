@@ -70,6 +70,11 @@ JSON.stringifyOnce = function(obj, replacer, indent){
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
     if (key == '') {
         printedObjects.push(obj); printedObjectKeys.push('root'); return value; 
+    } else if (typeof value == 'function') {
+       var qualifiedKey = key || '(empty key)'
+       var q = '' + value; q = 'Fx() > ' + q.substring(0, 120) + '...' 
+       printedObjects.push(q)
+       printedObjectKeys.push(qualifiedKey)
     } else if (printedObjIndex + '' != 'false' && typeof value == 'object') {
        if (printedObjectKeys[printedObjIndex] == 'root') {
          return '(pointer to root)' 
