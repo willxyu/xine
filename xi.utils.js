@@ -65,6 +65,7 @@ JSON.stringifyOnce = function(obj, replacer, indent){
   function printOnceReplacer(key, value) {
     console.log(key)
     console.log(value)
+    console.log(typeof value)
     if (printedObjects.length > 5000){ return 'object too long'; }
     var printedObjIndex = false
     printedObjects.forEach(function(obj, index){ if (obj===value) { printedObjIndex = index; } })
@@ -73,6 +74,7 @@ JSON.stringifyOnce = function(obj, replacer, indent){
     } else if (typeof value == 'function') {
        var qualifiedKey = key || '(empty key)'
        var q = '' + value; q = 'Fx() > ' + q.substring(0, 120) + '...' 
+      console.log(q)
        printedObjects.push(q)
        printedObjectKeys.push(qualifiedKey)
     } else if (printedObjIndex + '' != 'false' && typeof value == 'object') {
