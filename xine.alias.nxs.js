@@ -27,8 +27,9 @@ xi.commitNXSAliases = function() {
   // xi.aliases
   var funct = client.reflex_create(folder, "xi.alias", 'function', 'xine')
   var code = `
-  chainSortBy = xiu.chainSortBy
-  sort_by     = xiu.sort_by
+  var chainSortBy = xiu.chainSortBy
+  var sort_by     = xiu.sort_by
+  var write       = xiu.write
   
   xia = typeof xia != 'undefined' ? xia : {}
   xia.class = 'xia-alias'
@@ -42,7 +43,7 @@ xi.commitNXSAliases = function() {
     return out
   }
   
-  xia.aliasdisplay = function(arr, filter) {
+  xia.display = function(arr, filter) {
     // sort arr by id
     arr.sort( chainSortBy([
      sort_by('id', true, null),
@@ -83,7 +84,7 @@ xi.commitNXSAliases = function() {
       str += '<br><div id="xia-alias" class="mono"><span class="xia-alias-mute">Displaying </span>' + arr.length
       str += '<span class="xia-alias-mute"> aliases.</span></div>'
     }
-    xia.write('<div id="xia-alias">' + str + '</div>')
+    write('<div id="xia-alias">' + str + '</div>')
   }
   `
   funct.code = f(code)
