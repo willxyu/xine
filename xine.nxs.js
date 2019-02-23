@@ -45,12 +45,10 @@ xi.commitNXSMain = function() {
   alias = client.reflex_create(folder, "`echo, ala Mudlet", 'alias', 'xine')
   alias.text = '^`echo[ ]+(.*)$'
   alias.matching = 'regexp'
-  alias.actions.push({action: 'script', script: `
-    if (typeof xiu != 'undefined') { xiu.echo(args[1]) }
-  `})
+  alias.actions.push({action: 'script', script: `if (typeof xiu != 'undefined') { xiu.echo(args[1]) }`})
   // xi-error
   funct = client.reflex_create(folder, "xi-error", 'function', 'xine')
-  funct.code = `
+  code = `
    client.exec_function_obj = function(obj, args) {
     if (obj == null) return false;
     if ((!obj.code) || (!obj.code.length)) return false;
@@ -75,6 +73,7 @@ xi.commitNXSMain = function() {
         client.print('<span style="color: yellow"><i>' + r + '</i></span>')
      } }
   `
+  funct.code = f(code)
 }
 
 xi.commitNXSMain()
