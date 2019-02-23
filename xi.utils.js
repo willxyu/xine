@@ -13,9 +13,16 @@ xi.utils.clone = function(obj) {
 
 xi.utils.comma = function(n) { var bits = n.toString().split('.'); bits[0] = bits[0].replace(/\B(?=(\d{3})+(?!\d))/g,','); return bits.join('.') } /* https://stackoverflow.com/a/2901298 */
 
-// xi.utils.display = function(obj) {
-//  var r = function( k, v ) { if (typeof v === 'function') { var q = '' + v; q = q.substring(0, 120); return 'Fx() > ' + q }; return v };
-//  var m = JSON.stringify(a, r, 3); ow_Write('<span class="normal">' + m + '</span><br/>') }
+xi.utils.echo = function(test) {
+  var r   = function(a) { return a.charCodeAt(0) }
+  var str = test + '\r\n'
+      str = str.replace('+n', '\n')
+  var out = str.split('').map(r)
+      out.push(255)
+      out.push(249)
+  client.handle_read({data: out}) }
+
+xi.utils.inject = function(rule, classr) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
 
 xi.utils.interval = function(a, b) {
   if (!a) { return 0 }
@@ -123,19 +130,10 @@ JSON.stringifyOnce = function(obj, replacer, indent){
 
 xi.utils.display = function(a) { var x = JSON.stringifyOnce(a, null, 3); print(x) }
 
-xi.utils.echo = function(test) {
-  var r   = function(a) { return a.charCodeAt(0) }
-  var str = test + '\r\n'
-      str = str.replace('+n', '\n')
-  var out = str.split('').map(r)
-      out.push(255)
-      out.push(249)
-  client.handle_read({data: out})
-}
-
 xiu = xi.utils
 // Frequently Accessed Globals
 display = xiu.display
 lpad    = xiu.lpad
 rpad    = xiu.rpad
 clone   = xiu.clone
+inject  = xiu.inject
