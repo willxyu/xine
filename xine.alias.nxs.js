@@ -15,7 +15,7 @@ xi.commitNXSAliases = function() {
   
   // .sal filter
   var alias = client.reflex_create(folder, ".sal filter" , 'alias', 'xine')
-  alias.text = '^^\.sal[ ]+(.*)$'
+  alias.text = '^\.sal[ ]+(.*)$'
   alias.matching = 'regexp'
   code = `
   var matches = arguments[0]
