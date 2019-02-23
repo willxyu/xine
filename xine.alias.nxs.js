@@ -4,13 +4,24 @@ xi.commitNXSAliases = function() {
      // var o = str.split('\n'); var s = ''; o.forEach(function(val) { s += val.trim() + '\n' }); return s }
   
   var xine = client.get_package('xine')
-  
   var folder = client.reflex_create(xine, "Alias Access", 'group', 'xine')
+  
   // .sal
   var alias = client.reflex_create(folder, ".sal, show aliases" , 'alias', 'xine')
   alias.text = '^\.sal$'
   alias.matching = 'regexp'
   var code = `xia.display(xia.loop(client.packages))`
+  alias.actions.push({action: 'script', script: f(code) })
+  
+  // .sal filter
+  var alias = client.reflex_create(folder, ".sal filter" , 'alias', 'xine')
+  alias.text = '^^\.sal[ ]+(.*)$'
+  alias.matching = 'regexp'
+  code = `
+  var matches = arguments[0]
+  var filter  = matches[1]
+  xia.display(xia.loop(client.packages), filter)
+  `
   alias.actions.push({action: 'script', script: f(code) })
   
   // xi.aliases
@@ -41,7 +52,7 @@ xi.commitNXSAliases = function() {
     
     // style rules
     $('.' + xia.class).remove()
-    xia.inject('.xia-alias-mute { color: rgba( 67, 67, 67, 1 ); }', xia.class)
+    inject('.xia-alias-mute { color: rgba( 67, 67, 67, 1 ); }', xia.class)
     
     var c   = 0
     var str = '<br>'
@@ -77,3 +88,5 @@ xi.commitNXSAliases = function() {
   `
   funct.code = f(code)
 }
+
+xi.commitNXSAliases()
