@@ -56,6 +56,7 @@ xi.commitNXSMain = function() {
     if ((!obj.code) || (!obj.code.length)) return false;
     client.exec_script(obj.code, args, undefined, 'Function ' + client.current_package + ' [' + obj.name + ']');
     return true; }
+
    client.exec_script = function(script, args, current_package, id) {
     try {
         // add the API to the scope
