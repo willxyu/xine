@@ -57,6 +57,29 @@ xi.utils.uuid = function() {
     return (v == 'x' ? r : ( r&0x3|0x8)).toString(16) })
   return uid }
 
+/* https://stackoverflow.com/a/27645164 */
+xi.utils.sort_by = function(field, reverse, primer){
+    var key = primer ? 
+         function(x) {return primer(x[field]); }:
+         function(x) {return x[field] };
+    reverse = [-1, 1][+!!reverse];
+    return function (a, b) {
+        a = key(a);
+        b = key(b);
+        return a==b ? 0 : reverse * ((a > b) - (b > a)); //^ Return a zero if the two fields are equal!
+    } }
+
+xi.utils.chainSortBy = function(sortByArr) {
+    return function(a, b) {
+        for (var i=0; i<sortByArr.length; i++) {
+            var res = sortByArr[i](a,b);
+            if (res != 0)
+                return res; //If the individual sort_by returns a non-zero,
+                            //we found inequality, return the value from the comparator.
+        }
+        return 0;
+    } }
+
 // Display
 // https://stackoverflow.com/questions/11616630/json-stringify-avoid-typeerror-converting-circular-structure-to-json
 JSON.stringifyOnce = function(obj, replacer, indent){
