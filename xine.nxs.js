@@ -18,6 +18,7 @@ xi.commitNXSMain = function() {
   
   var alias = client.reflex_create(xine, "xine", 'alias', 'xine')
   alias.text = '^xine$'
+  alias.matching = 'regexp'
   alias.actions.push({action: 'function', fn: 'xi.error' })
   alias.actions.push({action: 'function', fn: 'xi.shtml' })
   
