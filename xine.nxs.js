@@ -18,8 +18,8 @@ xi.commitNXSMain = function() {
   
   var alias = client.reflex_create(xine, "xine", 'alias', 'xine')
   alias.text = '^xine$'
-  alias.actions.push({action: 'function', fn: 'xi-error' })
-  alias.actions.push({action: 'function', fn: 'xi-shtml' })
+  alias.actions.push({action: 'function', fn: 'xi.error' })
+  alias.actions.push({action: 'function', fn: 'xi.shtml' })
   
   // Generic Functions folder
   var folder = client.reflex_create(xine, "Generic Functions", 'group', 'xine')
@@ -49,7 +49,7 @@ xi.commitNXSMain = function() {
   alias.matching = 'regexp'
   alias.actions.push({action: 'script', script: `if (typeof xiu != 'undefined') { xiu.echo(args[1]) }`})
   // xi-error
-  funct = client.reflex_create(folder, "xi-error", 'function', 'xine')
+  funct = client.reflex_create(folder, "xi.error", 'function', 'xine')
   code = `
    client.exec_function_obj = function(obj, args) {
     if (obj == null) return false;
@@ -81,7 +81,7 @@ xi.commitNXSMain = function() {
   // SHTML Folder
   var folder = client.reflex_create(xine, "SHTML", 'group', 'xine')
   // xi-shtml
-  funct = client.reflex_create(folder, "xi-shtml", 'function', 'xine')
+  funct = client.reflex_create(folder, "xi.shtml", 'function', 'xine')
   code = `
   xis = typeof xis != 'undefined' ? xis : {}
   
