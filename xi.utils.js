@@ -111,3 +111,8 @@ xi.utils.echo = function(test) {
 }
 
 xiu = xi.utils
+// Frequently Accessed Globals
+display = xiu.display
+lpad    = xiu.lpad
+rpad    = xiu.rpad
+clone   = xiu.clone
