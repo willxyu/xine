@@ -10,6 +10,8 @@
 // GMCP eventing:
 
 xi.commitNXSMain = function() {
+  var f = function(str) { var o = str.split('\n'); var s = ''; o.forEach(function(val) { s += val.trim() + '\n' }); return s }
+  
   client.package_create('xine',"XINE for Nexus")
   var xine = client.get_package('xine')
   
@@ -32,12 +34,13 @@ xi.commitNXSMain = function() {
   alias = client.reflex_create(folder, "`js, execute Javascript" , 'alias', 'xine')
   alias.text = '^`js[ ]+(.*)$'
   alias.matching = 'regexp'
-  alias.actions.push({action: 'script', script: `
+  var code = `
     var s  = args[1]
     var sx = eval(s)
     if (typeof display == 'function') { display(sx) }
     console.log(sx)
-  `})
+  `
+  alias.actions.push({action: 'script', script: f(code) })
   // `echo
   alias = client.reflex_create(folder, "`echo, ala Mudlet", 'alias', 'xine')
   alias.text = '^`echo[ ]+(.*)$'
