@@ -19,6 +19,7 @@ xi.commitNXSUtils = function() {
   alias.matching = 'regexp'
   alias.actions.push({action: 'function', fn: 'xi.error' })
   alias.actions.push({action: 'function', fn: 'xi.shtml' })
+  alias.actions.push({action: 'function', fn: 'xi.alias' })
   
   // Generic Functions folder
   var folder = client.reflex_create(xine, "Generic Functions", 'group', 'xine')
