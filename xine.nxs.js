@@ -16,6 +16,7 @@ xi.commitNXSMain = function() {
   // `js
   var alias = client.reflex_create(xine, "`js, execute Javascript" , 'alias', 'xine')
   alias.text = '^`js[ ]+(.*)$'
+  alias.matching = 'regexp'
   alias.actions.push({action: 'script', script: `
     var s  = args[1]
     var sx = eval(s)
@@ -25,6 +26,7 @@ xi.commitNXSMain = function() {
   // `echo
   alias = client.reflex_create(xine, "`echo, ala Mudlet", 'alias', 'xine')
   alias.text = '^`echo[ ]+(.*)$'
+  alias.matching = 'regexp'
   alias.actions.push({action: 'script', script: `
     if (typeof xiu != 'undefined') { xiu.echo(args[1]) }
   `})
