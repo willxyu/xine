@@ -64,6 +64,8 @@ xi.utils.uuid = function() {
     return (v == 'x' ? r : ( r&0x3|0x8)).toString(16) })
   return uid }
 
+xi.utils.write = function(msg) { ow_Write('#output_main', msg) }
+
 /* https://stackoverflow.com/a/27645164 */
 xi.utils.sort_by = function(field, reverse, primer){
     var key = primer ? 
