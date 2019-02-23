@@ -210,6 +210,9 @@ xi.commitNXSMain = function() {
    // console.log(chunks)
    return chunks
   }
+
+  // Global
+  express = xis.express
   `
   funct.code = f(code)
 }
