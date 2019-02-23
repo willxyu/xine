@@ -25,7 +25,7 @@ xi.commitNXSAliases = function() {
   alias.actions.push({action: 'script', script: f(code) })
   
   // xi.aliases
-  var funct = client.reflex_create(folder, "xi.aliases", 'function', 'xine')
+  var funct = client.reflex_create(folder, "xi.alias", 'function', 'xine')
   var code = `
   chainSortBy = xiu.chainSortBy
   sort_by     = xiu.sort_by
