@@ -18,6 +18,7 @@ xi.commitNXSMain = function() {
   var alias = client.reflex_create(xine, "xine", 'alias', 'xine')
   alias.text = '^xine$'
   alias.actions.push({action: 'function', fn: 'xi-error' })
+  alias.actions.push({action: 'function', fn: 'xi-shtml' })
   
   // Generic Functions folder
   var folder = client.reflex_create(xine, "Generic Functions", 'group', 'xine')
