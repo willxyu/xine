@@ -48,11 +48,11 @@ xi.commitNXSMain = function() {
         var ep = api + script
         fn(args, current_package);
      } catch(err) {
-        var m = err.stack.split('\n')
+        var m = err.stack.split('\\n')
         var n = m[1] || ''
-        var o = n.match(/\<anonymous\>\:(\d+)/)
+        var o = n.match(/\\<anonymous\\>\\:(\\d+)/)
         var p = o[1]
-        var q = ep.split('\n')
+        var q = ep.split('\\n')
         var r = q[(parseInt(p) - 3)]
         client.print("<span style='color: red'><b>Error in " + id + ":</b><br/>" + err + "</span>");
         client.print('<span style="color: yellow"><i>' + r + '</i></span>')
