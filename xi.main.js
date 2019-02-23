@@ -31,7 +31,7 @@ xi.main.debug = function(msg, tier, masked) {
 
 xi.main.dependencies = [
  'https://raw.githubusercontent.com/willxyu/xine/master/xi.utils.js',
-   
+ 'https://raw.githubusercontent.com/willxyu/xine/master/xine.nxs.js',
 ]
 
 xi.main.sequentialLoad = function() {
