@@ -34,6 +34,7 @@ xi.main.dependencies = [
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.utilities.nxs.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.shtml.nxs.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.alias.nxs.js',
+ 'https://raw.githubusercontent.com/willxyu/xine/master/xine.youtube.nxs.js',
 ]
 
 xi.main.sequentialLoad = function() {
