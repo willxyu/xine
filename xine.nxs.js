@@ -13,10 +13,23 @@ xi.commitNXSMain = function() {
   client.package_create('xine',"XINE for Nexus")
   var xine = client.get_package('xine')
   
+  var alias = client.reflex_create(xine, "xine", 'alias', 'xine')
+  alias.text = '^xine$'
+  alias.actions.push({action: 'function', fn: 'xi-error' })
+  
+  // Generic Functions folder
+  var folder = client.reflex_create(xine, "Generic Functions", 'group', 'xine')
+  var funct = client.reflex_create(folder, "onLoad", 'function', 'xine')
+  funct.code = `send_command('xine')`
+  var funct = client.reflex_create(folder, "onGMCP", 'function', 'xine')
+  funct.code = ``
+  var funct = client.reflex_create(folder, "onBlock", 'function', 'xine')
+  funct.code = ``
+  
   // Utilties Folder
   var folder = client.reflex_create(xine, "Utilities", 'group', 'xine')
   // `js
-  var alias = client.reflex_create(folder, "`js, execute Javascript" , 'alias', 'xine')
+  alias = client.reflex_create(folder, "`js, execute Javascript" , 'alias', 'xine')
   alias.text = '^`js[ ]+(.*)$'
   alias.matching = 'regexp'
   alias.actions.push({action: 'script', script: `
@@ -32,7 +45,8 @@ xi.commitNXSMain = function() {
   alias.actions.push({action: 'script', script: `
     if (typeof xiu != 'undefined') { xiu.echo(args[1]) }
   `})
-  var funct = client.reflex_create(folder, "xi-error", 'function', 'xine')
+  // xi-error
+  funct = client.reflex_create(folder, "xi-error", 'function', 'xine')
   funct.code = `
    client.exec_function_obj = function(obj, args) {
     if (obj == null) return false;
