@@ -52,6 +52,8 @@ xi.main.sequentialLoad = function() {
       })
     })
   })
+  
+  p = p.then(function() { if (typeof send_command == 'function') { send_command('xine') } })
 }
 
 xi.main.initiate = function() {
