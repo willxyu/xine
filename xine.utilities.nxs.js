@@ -11,7 +11,6 @@ xi.commitNXSUtils = function() {
   var f = function(str) { return str }
      // var o = str.split('\n'); var s = ''; o.forEach(function(val) { s += val.trim() + '\n' }); return s }
   
-  client.package_remove('xine')
   client.package_create('xine',"XINE for Nexus")
   var xine = client.get_package('xine')
   
