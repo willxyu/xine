@@ -7,7 +7,7 @@
 // UI Templates :
 // GMCP eventing:
 
-xi.commitNXSUtils = function() {
+xi.commitNXSMain = function() {
   var f = function(str) { return str }
      // var o = str.split('\n'); var s = ''; o.forEach(function(val) { s += val.trim() + '\n' }); return s }
   
@@ -80,4 +80,4 @@ xi.commitNXSUtils = function() {
   funct.code = f(code)
 }
 
-xi.commitNXSUtils()
+xi.commitNXSMain()
