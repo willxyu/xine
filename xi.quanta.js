@@ -50,12 +50,18 @@ client.read_data = function(s) {
 $(document).off('xi-pert')
 $(document).on('xi-pert', function(e, data) {
   xi.pertr = new Date().getTime() - data
+  xi.perta = xi.perta || []
+  xi.perta.push(xi.pertr)
+  if (xi.perta.length > 20) { xi.perta.shift() }
   xi.body.trigger('xiPert')
 })
 
 $(document).off('xi-perf')
 $(document).on('xi-perf', function() {
   xi.perft = new Date().getTime() - xi.perf
+  xi.perfa = xi.perfa || []
+  xi.perfa.push(xi.perft)
+  if (xi.perfa.length > 20) { xi.perfa.shift() }
   xi.body.trigger('xiPerf')
 })
 
