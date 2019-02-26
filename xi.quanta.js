@@ -49,7 +49,7 @@ client.read_data = function(s) {
 
 $(document).off('xi-pert')
 $(document).on('xi-pert', function(e, data) {
-  console.log(data)
+  xi.pertt = new Date().getTime() - xi.pert
   xi.body.trigger('xiPert')
 })
 
