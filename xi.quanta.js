@@ -48,17 +48,15 @@ client.read_data = function(s) {
 }
 
 $(document).off('xi-pert')
-$(document).on('xi-pert', function(data) {
+$(document).on('xi-pert', function(e, data) {
   console.log(data)
-  
+  xi.body.trigger('xiPert')
 })
 
 $(document).off('xi-perf')
 $(document).on('xi-perf', function() {
-  console.log(xi.perf)
-
+  xi.perft = new Date().getTime() - xi.perf
+  xi.body.trigger('xiPerf')
 })
 
-if (typeof ws != 'undefined') {
-  ws.onmessage = client.handle_read
-}
+if (typeof ws != 'undefined') { ws.onmessage = client.handle_read }
