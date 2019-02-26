@@ -58,3 +58,7 @@ $(document).on('xi-perf', function() {
   console.log(xi.perf)
 
 })
+
+if (typeof ws != 'undefined') {
+  ws.onmessage = client.handle_read
+}
