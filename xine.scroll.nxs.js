@@ -196,8 +196,8 @@ xi.commitNXSScroll = function() {
     var c = 'mehr'
     var inject = function(rule) { $('body').append('<div class="' + c + '">&shy;<style>' + rule + '</style></div>') }
     $('.mehr').remove()
-    inject('#tab_content_main_output {overflow-y: scroll !important; }\n')
-    inject('.output_wrap > .output {overflow-y: scroll !important; }\n')
+    inject('#tab_content_main_output {overflow-y: scroll !important; }\\n')
+    inject('.output_wrap > .output {overflow-y: scroll !important; }\\n')
     
   }, 1000 )
   `
