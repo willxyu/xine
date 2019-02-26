@@ -17,6 +17,7 @@ xi.commitNXSUtils = function() {
   var alias = client.reflex_create(xine, "xine", 'alias', 'xine')
   alias.text = '^xine$'
   alias.matching = 'regexp'
+  alias.actions.push({action: 'function', fn: 'xi.scroll' })
   alias.actions.push({action: 'function', fn: 'xi.error' })
   alias.actions.push({action: 'function', fn: 'xi.shtml' })
   alias.actions.push({action: 'function', fn: 'xi.alias' })
