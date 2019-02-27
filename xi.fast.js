@@ -3,7 +3,7 @@ xi = typeof xi != 'undefined' ? xi : {}
 xi.output  = $('#output_main .output')
 xi.scrollb = $('#output_main .output_scrollback')
 
-xi.output  = client.document.querySelectorAll(selector + ' .output')[0]
+xi.output  = client.document.querySelectorAll('#output_main .output')[0]
 
 $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdom.min.js'})
  .done(function(data) {
