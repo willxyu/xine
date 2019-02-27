@@ -5,6 +5,8 @@ xi.scrollb = $('#output_main .output_scrollback')
 
 xi.output  = client.document.querySelectorAll('#output_main .output')[0]
 
+xi.fastdom = true
+
 $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdom.min.js'})
  .done(function(data) {
   try { eval(data) } catch(err) { console.log(err) } 
@@ -12,16 +14,16 @@ $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdo
 
 ow_Write = function(selector, text) {
   if (text.trim() == '') { return }
-  if (typeof fastdom != 'undefined') {
-    var output = client.document.querySelectorAll(selector + ' .output')[0]
-    var newel  = document.createElement('div')
-        newel.innerHTML = text
-        newel.className = 'line'
-        newel.id        = 'msg' + num_msgs
-    output.appendChild(newel)
-    trim_ow(selector)
-    num_msgs++
+  if (typeof fastdom != 'undefined' && xi.fastdom) {
     fastdom.measure(function() {
+      var output = client.document.querySelectorAll(selector + ' .output')[0]
+      var newel  = document.createElement('div')
+          newel.innerHTML = text
+          newel.className = 'line'
+          newel.id        = 'msg' + num_msgs
+      output.appendChild(newel)
+      trim_ow(selector)
+      num_msgs++
       // Measure
       var h = output.scrollHeight
       fastdom.mutate(function() {
