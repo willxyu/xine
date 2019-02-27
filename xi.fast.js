@@ -1,7 +1,7 @@
 xi = typeof xi != 'undefined' ? xi : {}
 
-xi.output  = $('#output_main > .output')
-xi.scrollb = $('#output_main > .output_scrollback')
+xi.output  = $('#output_main .output')
+xi.scrollb = $('#output_main .output_scrollback')
 
 $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdom.min.js'})
  .done(function(data) {
@@ -16,7 +16,7 @@ ow_Write = function(selector, text) {
     console.log(div)
     xi.output.append(div)
     xi.scrollb.append(eiv)
-    
+   /*
     var output = client.document.querySelectorAll(selector + ' .output')[0] // not sure I agree with this
     fastdom.measure(function() {
       // Measure
@@ -25,7 +25,7 @@ ow_Write = function(selector, text) {
         // Mutate
         output.scrollTop = h
       })
-    })
+    })*/
   } else { // Original Code
     window.requestAnimationFrame(function() {
       var hooks = $.cssHooks
