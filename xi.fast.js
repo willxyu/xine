@@ -21,14 +21,12 @@ ow_Write = function(selector, text) {
         newel.id        = 'msg' + num_msgs
     xi.output.appendChild(newel)
     xi.scrollb.append(eiv)
-   /*
-    var output = client.document.querySelectorAll(selector + ' .output')[0] // not sure I agree with this
     fastdom.measure(function() {
       // Measure
-      var h = output.scrollHeight
+      var h = xi.output.scrollHeight
       fastdom.mutate(function() {
         // Mutate
-        output.scrollTop = h
+        xi.output.scrollTop = h
       })
     })*/
   } else { // Original Code
