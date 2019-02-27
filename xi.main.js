@@ -4,6 +4,34 @@
 //  xine.nxs    > Amalgamated Nexus-side code for XINE, imported & run within "Nexus"
 //  xine-custom > User-specified overwrites of XINE
 
+/*
+  xi main
+  xi util
+  xi loader
+  xi quanta
+  xi fast
+  xi gmcp
+
+  xine main
+  xine opts
+  xine misc
+  
+  xine scroll
+  
+  xine shml
+  xine colors
+  xine mono
+  
+  xine ndb
+  xine ndb chats
+  xine ndb starmourn
+  
+  xine starmourn ui
+    interface
+    datasheet
+  xine starmourn basher
+ */
+
 // packets
 //  - [xim] - main
 //  - [xiu] - utils, display, trigger-test, inline-js
