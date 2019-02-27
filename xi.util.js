@@ -1,19 +1,19 @@
-xi       = typeof xi       != 'undefined' ? xi       : {}
-xi.utils = typeof xi.utils != 'undefined' ? xi.utils : {}
+xi      = typeof xi      != 'undefined' ? xi      : {}
+xi.util = typeof xi.util != 'undefined' ? xi.util : {}
 
-xi.utils.clean = function(css) { if (typeof css != 'string') { return css }; var n = Number(css.replace(/[^-\d\.]/g,'')); return n }
+xi.util.clean = function(css) { if (typeof css != 'string') { return css }; var n = Number(css.replace(/[^-\d\.]/g,'')); return n }
 
-xi.utils.clone = function(obj) {
+xi.util.clone = function(obj) {
   var copy
   if (null == obj || 'object' != typeof obj) { return obj }
   if (obj instanceof Date) { copy = new Date(); copy.setTime(obj.getTime()); return copy }
-  if (obj instanceof Array) { copy = []; for (var i = 0; i < obj.length; i++) { copy[i] = xi.utils.clone(obj[i]) }; return copy }
-  if (obj instanceof Object) { copy = {}; for (var attr in obj) { if (obj.hasOwnProperty(attr)) { copy[attr] = xi.utils.clone(obj[attr]) } }; return copy }
+  if (obj instanceof Array) { copy = []; for (var i = 0; i < obj.length; i++) { copy[i] = xi.util.clone(obj[i]) }; return copy }
+  if (obj instanceof Object) { copy = {}; for (var attr in obj) { if (obj.hasOwnProperty(attr)) { copy[attr] = xi.util.clone(obj[attr]) } }; return copy }
   throw new Error('Unable to copy obj! Type not supported.') }
 
-xi.utils.comma = function(n) { var bits = n.toString().split('.'); bits[0] = bits[0].replace(/\B(?=(\d{3})+(?!\d))/g,','); return bits.join('.') } /* https://stackoverflow.com/a/2901298 */
+xi.util.comma = function(n) { var bits = n.toString().split('.'); bits[0] = bits[0].replace(/\B(?=(\d{3})+(?!\d))/g,','); return bits.join('.') } /* https://stackoverflow.com/a/2901298 */
 
-xi.utils.echo = function(test) {
+xi.util.echo = function(test) {
   var r   = function(a) { return a.charCodeAt(0) }
   var str = test + '\r\n'
       str = str.replace('+n', '\n')
@@ -22,9 +22,9 @@ xi.utils.echo = function(test) {
       out.push(249)
   client.handle_read({data: out}) }
 
-xi.utils.inject = function(rule, classr) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
+xi.util.inject = function(rule, classr) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
 
-xi.utils.interval = function(a, b) {
+xi.util.interval = function(a, b) {
   if (!a) { return 0 }
   var a = a; var b = b || new Date();
   if (b > a) { b = [a, a = b][0] } // swap variables
@@ -39,23 +39,23 @@ xi.utils.interval = function(a, b) {
       hrs  = hrs % 24
   return {msecs: msecs, secs: secs, mins: mins, hrs: hrs, days: days} }
 
-xi.utils.key  = function(obj, val) { for (var prop in obj) { if (obj.hasOwnProperty(prop)) { if (obj[prop] === val) { return prop } } } }
+xi.util.key  = function(obj, val) { for (var prop in obj) { if (obj.hasOwnProperty(prop)) { if (obj[prop] === val) { return prop } } } }
 
-xi.utils.lpad = function(str, len, ch) {
+xi.util.lpad = function(str, len, ch) {
   if (typeof str == 'number') { str = str.toString() }; if (ch == null) { ch = ' ' };
   var r = len - str.length; if (r < 0) { r = 0 }; return ch.repeat(r) + str }
 
-xi.utils.title= function(str) { return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) }
+xi.util.title= function(str) { return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) }
 
-xi.utils.round= function(num, dec)  { var mult = 10 ^ (dec || 0); return Math.floor(num * mult + 0.5) / mult }
+xi.util.round= function(num, dec)  { var mult = 10 ^ (dec || 0); return Math.floor(num * mult + 0.5) / mult }
 
-xi.utils.rpad = function(str, len, ch) {
+xi.util.rpad = function(str, len, ch) {
   if (typeof str == 'number') { str = str.toString() }; if (ch == null) { ch = ' ' };
   var r = len - str.length; if (r < 0) { r = 0 }; return str + ch.repeat(r) }
 
-xi.utils.uniarr = function(arr) { var a = arr.concat(); for (var i = 0; i < a.length; ++i) {for (var j = i+1; j < a.length; ++j) { if (a[i] === a[j]) { a.splice(j--, 1) } } }; return a } // https://stackoverflow.com/a/1584377
+xi.util.uniarr = function(arr) { var a = arr.concat(); for (var i = 0; i < a.length; ++i) {for (var j = i+1; j < a.length; ++j) { if (a[i] === a[j]) { a.splice(j--, 1) } } }; return a } // https://stackoverflow.com/a/1584377
 
-xi.utils.uuid = function() {
+xi.util.uuid = function() {
   var d = new Date().getTime()
   if (window.performance && typeof window.performance.now === 'function') { d += performance.now() }
   var uid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(v) {
@@ -64,10 +64,10 @@ xi.utils.uuid = function() {
     return (v == 'x' ? r : ( r&0x3|0x8)).toString(16) })
   return uid }
 
-xi.utils.write = function(msg) { ow_Write('#output_main', msg) }
+xi.util.write = function(msg) { ow_Write('#output_main', msg) }
 
 /* https://stackoverflow.com/a/27645164 */
-xi.utils.sort_by = function(field, reverse, primer){
+xi.util.sort_by = function(field, reverse, primer){
     var key = primer ? 
          function(x) {return primer(x[field]); }:
          function(x) {return x[field] };
@@ -78,7 +78,7 @@ xi.utils.sort_by = function(field, reverse, primer){
         return a==b ? 0 : reverse * ((a > b) - (b > a)); //^ Return a zero if the two fields are equal!
     } }
 
-xi.utils.chainSortBy = function(sortByArr) {
+xi.util.chainSortBy = function(sortByArr) {
     return function(a, b) {
         for (var i=0; i<sortByArr.length; i++) {
             var res = sortByArr[i](a,b);
@@ -130,9 +130,9 @@ JSON.stringifyOnce = function(obj, replacer, indent){
   return JSON.stringify(obj, printOnceReplacer, indent)
 }
 
-xi.utils.display = function(a) { var x = JSON.stringifyOnce(a, null, 3); print(x) }
+xi.util.display = function(a) { var x = JSON.stringifyOnce(a, null, 3); print(x) }
 
-xiu = xi.utils
+xiu = xi.util
 // Frequently Accessed Globals
 display = xiu.display
 lpad    = xiu.lpad
