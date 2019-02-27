@@ -13,20 +13,20 @@ $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdo
 ow_Write = function(selector, text) {
   if (text.trim() == '') { return }
   if (typeof fastdom != 'undefined') {
-    var div = '<div id="msg'    + num_msgs + '" class="line">' + text + '</div>'
-    var eiv = '<div id="sb_msg' + num_msgs + '" class="line">' + text + '</div>'
+    var output = client.document.querySelectorAll(selector + ' .output')[0]
     var newel  = document.createElement('div')
         newel.innerHTML = text
         newel.className = 'line'
         newel.id        = 'msg' + num_msgs
-    xi.output.appendChild(newel)
-    xi.scrollb.append(eiv)
+    output.appendChild(newel)
+    trim_ow(selector)
+    num_msgs++
     fastdom.measure(function() {
       // Measure
-      var h = xi.output.scrollHeight
+      var h = output.scrollHeight
       fastdom.mutate(function() {
         // Mutate
-        xi.output.scrollTop = h
+        output.scrollTop = h
       })
     })
   } else { // Original Code
