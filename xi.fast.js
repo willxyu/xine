@@ -28,7 +28,7 @@ ow_Write = function(selector, text) {
         // Mutate
         xi.output.scrollTop = h
       })
-    })*/
+    })
   } else { // Original Code
     window.requestAnimationFrame(function() {
       var hooks = $.cssHooks
