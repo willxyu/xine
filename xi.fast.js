@@ -1,6 +1,6 @@
 xi = typeof xi != 'undefined' ? xi : {}
 
-xi.output  = $('#output_main .output')
+xi.output  = $('#output_main .output').append
 xi.scrollb = $('#output_main .output_scrollback')
 
 $.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdom.min.js'})
@@ -13,8 +13,7 @@ ow_Write = function(selector, text) {
   if (typeof fastdom != 'undefined') {
     var div = '<div id="msg'    + num_msgs + '" class="line">' + text + '</div>'
     var eiv = '<div id="sb_msg' + num_msgs + '" class="line">' + text + '</div>'
-    console.log(div)
-    xi.output.append(div)
+    xi.output(div)
     xi.scrollb.append(eiv)
    /*
     var output = client.document.querySelectorAll(selector + ' .output')[0] // not sure I agree with this
