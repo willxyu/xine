@@ -1,3 +1,58 @@
+// Establish Global Control
+//   handle_GMCP < telnet_split (line 6 of client.read_data)
+//   We are going to reduce Nexus' independent GMCP handling & provide specific event control for users, but also provide internal templates
+if (typeof client != 'undefined') {
+  client.handle_GMCP = function(data) {
+    var gmcp_fire_event  = false
+    var gmcp_event_param = ''
+    if (data.GMCP) {
+      if (client.echo_gmcp) { print('[GMCP: ' + data.GMCP.method + ' ' + data.GMCP.args, client.color_gmcpecho) }
+      var gmcp_method = data.GMCP.method
+      var gmcp_args   = data.GMCP.args
+      if (gmcp_args.length == 0) { gmcp_args = "\"\"" }
+      gmcp_args = JSON.parse(gmcp_args)
+      
+      if (gmcp_method == 'Core.Ping') { if (GMCP.PingStart) { GMCP.PingTime = new Date().getTime() - GMCP.PingStart }; GMCP.PingStart = null }
+
+      if (gmcp_method == 'Char.Name') {
+        GMCP.Character = gmcp_args
+        logged_in      = true
+        setTimeout( function() { if (client.load_settings) { gmcp_import_system() } }, 1000)
+      }
+      if (gmcp_method == 'IRE.Display.FixedFont') {
+        var res = {}
+            res.display_fixed_font = true
+            res.start = (gmcp_args == 'start')
+        return res
+      }
+      if (gmcp_method == "IRE.FileStore.Content") {
+         var file = gmcp_args;
+         if (file.name && file.name == "raw_refresh") {
+           if (file.text != "") { import_system(file.text) }
+           $.colorbox.close();
+         } else if (file.name && file.name == "raw") {
+           if (file.text != "") { import_system(file.text) }
+         }
+      }
+      if (gmcp_method == "IRE.FileStore.List") {
+         var list = gmcp_args;
+         if (client.settings_window && client.settings_window.process_filelist)
+             client.settings_window.process_filelist (list);
+      }
+
+      // The rest of GMCP we will provide specific event control
+      $(document).trigger('gmcp-' + gmcp_method, [gmcp_args])
+      $(document).trigger('gmcp-' + gmcp_method + '-user', [gmcp_args])
+      
+      // 3 pre-existing bound behaviours
+      $(document).trigger('onGMCP', [gmcp_method, gmcp_args])
+      run_function('onGMCP', {'gmcp_method': gmcp_method, 'gmcp_args': gmcp_args}, 'ALL')
+      if (gmcp_fire_event) { client.handle_event('GMCP', gmcp_method, gmcp_event_param) }
+    }
+ }
+}
+
+// Now, define the intercepts
 xi    = typeof xi    != 'undefined' ? xi    : {}
 gmcpf = typeof gmcpf != 'undefined' ? gmcpf : {}
 gmcpf.debug = false
@@ -622,7 +677,7 @@ gmcpf.leanDefencelist = function(data) {
 gmcpf.leanDefenceadd = function(data) { GMCP.Defences[data.name] = data }
 gmcpf.leanDefenceremove = function(data) {
   for (var i = 0; i < data.length; ++i) { delete GMCP.Defences[data[i]] } }
-  
+
 gmcpf.init()
 
 xi.gmcp = gmcpf
