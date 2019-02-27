@@ -1,8 +1,25 @@
 xi = typeof xi != 'undefined' ? xi : {}
 
+$.ajax({url: 'https://raw.githubusercontent.com/wilsonpage/fastdom/master/fastdom.min.js'})
+ .done(function(data) {
+  try { eval(data) } catch(err) { console.log(err) } 
+ })
+
 ow_Write = function(selector, text) {
   if (text.trim() == '') { return }
+  var div = '<div id="msg' + num_msgs + '" class="line">' + text + '</div>'
+  var eiv = '<div id="sb_msg' + num_msgs + '" class="line">' + text + '</div>'
   
+  if (typeof fastdom != 'undefined') {
+    fastdom.measure(function() {
+      // Measure
+      fastdom.mutate(function() {
+        // Mutate
+      })
+    })
+  } else { // Original Code
+    
+  }
 }
 
 
