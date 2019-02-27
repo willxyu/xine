@@ -33,6 +33,7 @@ xi.main.dependencies = [
  'https://raw.githubusercontent.com/willxyu/xine/master/xi.util.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xi.quanta.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xi.fast.js',
+ 'https://raw.githubusercontent.com/willxyu/xine/master/xi.gmcp.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.main.nxs.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.scroll.nxs.js',
  'https://raw.githubusercontent.com/willxyu/xine/master/xine.shtml.nxs.js',
