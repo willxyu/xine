@@ -26,6 +26,15 @@ xi.load.init = function() {
   rules += '.xil-updates {position: absolute; top: 55%; left: 50%; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
   
+  rules += '.xil-checkbox {display:block; position:relative; padding-left:23px; margin-bottom:8px; cursor:pointer; font-size:14px; user-select:none; }\n'
+  rules += '.xil-checkbox input {position:absolute; opacity:0; cursor:pointer; height:0; width:0; }\n'
+  rules += '.checkmark {position:absolute; top:0; left:0; height:23px; width:23px; background-color:#eee; }\n'
+  rules += '.xil-checkbox:hover input ~ .checkmark {background-color: #ccc; }\n'
+  rules += '.xil-checkbox input:checked ~ .checkmark {background-color: #2196F3; }\n'
+  rules += '.checkmark:after {content:''; position:absolute; display:none; }\n'
+  rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
+  rules += '.xil-checkbox .checkmark:after {left:9px; top:4px; width:5px; height:10px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
+
   $('.' + classr).remove()
   inject(rules)
 
@@ -73,6 +82,22 @@ xi.load.update = function(msg) {
 xi.load.remove = function() {
   $('#xil-loader').remove()
   $('.' + classr).remove()
+}
+
+xi.load.options = function() {
+  var name = 'loader'
+  var m = clone(xi.main.dependencies)
+  var d = ''
+  d += '<div id="xil-'+name+'-options>'
+  for (var i = 0; i < m.length; i++) {
+    var c = ''
+    if (m[i].default) { c = 'checked' }
+    d += '<label class="xil-checkbox">' + m[i].url
+    d += '<input type="checkbox" checked="' + c + '">'
+    d += '<span class="checkmark"></span></label>'
+  }
+  d += '</div>'
+  $('.xil-content').append(d)
 }
 
 xi.load.init()
