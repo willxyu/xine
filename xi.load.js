@@ -57,3 +57,4 @@ xi.load.remove = function() {
   $('.' + classr).remove()
 }
 
+xi.load.init()
