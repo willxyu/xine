@@ -1,5 +1,5 @@
 /* Distribution
-     XINI as XINE loader            (.nxs)
+     XINI as XINE loader             (.nxs)
      xi.main.js as XI Header         (.github)
      xine.main.nxs.js as XINE Header (.github)
      XINE as XINE Main               (.nxs)
