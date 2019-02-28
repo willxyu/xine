@@ -88,7 +88,7 @@ xi.load.options = function() {
   var name = 'loader'
   var m = clone(xi.main.dependencies)
   var d = ''
-  d += '<div id="xil-'+name+'-options>'
+  d += '<div id="xil-'+name+'-options">'
   for (var i = 0; i < m.length; i++) {
     var c = ''
     if (m[i].default) { c = 'checked' }
