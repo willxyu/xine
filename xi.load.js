@@ -33,7 +33,7 @@ xi.load.init = function() {
   rules += '.xil-checkbox input:checked ~ .checkmark {background-color: #2196F3; }\n'
   rules += '.checkmark:after {content:""; position:absolute; display:none; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
-  rules += '.xil-checkbox .checkmark:after {left:4px; top:2px; width:4px; height:7px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
+  rules += '.xil-checkbox .checkmark:after {left:5px; top:2px; width:4px; height:7px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
 
   $('.' + classr).remove()
   inject(rules)
@@ -91,9 +91,9 @@ xi.load.options = function() {
   d += '<div id="xil-'+name+'-options">'
   for (var i = 0; i < m.length; i++) {
     var c = ''
-    if (m[i].default) { c = 'checked' }
+    if (m[i].default) { c = 'checked="checked"' }
     d += '<label class="xil-checkbox">' + m[i].url
-    d += '<input type="checkbox" checked="' + c + '">'
+    d += '<input type="checkbox" ' + c + '>'
     d += '<span class="checkmark"></span></label>'
   }
   d += '</div>'
