@@ -26,14 +26,14 @@ xi.load.init = function() {
   rules += '.xil-updates {position: absolute; top: 55%; left: 50%; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
   
-  rules += '.xil-checkbox {font-family:"Dosis"; display:block; position:relative; padding-left:23px; margin-bottom:8px; cursor:pointer; font-size:11px; user-select:none; }\n'
+  rules += '.xil-checkbox {font-family:"Lucida"; display:block; position:relative; padding-left:23px; margin-bottom:4px; cursor:pointer; font-size:11px; user-select:none; }\n'
   rules += '.xil-checkbox input {position:absolute; opacity:0; cursor:pointer; height:0; width:0; }\n'
   rules += '.checkmark {position:absolute; top:0; left:0; height:16px; width:16px; background-color:#eee; }\n'
   rules += '.xil-checkbox:hover input ~ .checkmark {background-color: #ccc; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark {background-color: #2196F3; }\n'
   rules += '.checkmark:after {content:""; position:absolute; display:none; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
-  rules += '.xil-checkbox .checkmark:after {left:6px; top:3px; width:5px; height:10px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
+  rules += '.xil-checkbox .checkmark:after {left:6px; top:3px; width:4px; height:7px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
 
   $('.' + classr).remove()
   inject(rules)
