@@ -44,10 +44,10 @@ xi.main.first = function() {
   var p = $.when(1)
       p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' }) 
          }).then(function(datum) {
-           console.log(datum)
+           try { eval(datum) } catch(err) { console.log(err) }
          }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' })
          }).then(function(datum) {
-           console.log(datum)
+           try { eval(datum) } catch(err) { console.log(err) }
          })
 }
 
