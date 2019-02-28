@@ -96,6 +96,4 @@ xi.main.initiate = function() {
   if (client.package_exists("xine custom") != 0) { client.send_direct("xine custom") }
 }
 
-xim = xi.main  // Shorthand, shouldn't really access most things in "main"
-
-xim.initiate()
+xi.main.initiate()
