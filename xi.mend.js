@@ -7,9 +7,8 @@ xi.mend.write     = false
 
 xi.mend.debug = function(msg, tier, masked) {
   var tier = tier
-  if (typeof xi.mend.default == 'number') { tier = xi.mend.default }
-  if (typeof tier == 'undefined') { tier = 3 }
-  if (xi.mend.threshold && tier > xi.mend.threshold) {
+  if (typeof tier == 'undefined') { tier = xi.mend.default }
+  if (xi.mend.threshold && tier <= xi.mend.threshold) {
     console.log(msg)
     if (xi.mend.write && !masked) { xi.write(msg) }
   }
