@@ -57,7 +57,7 @@ xi.main.first = function() {
       Q.push(m)
     })
   }
-  p.then(function() { console.log(Q) }
+  p.then(function() { console.log(Q) })
 }
 
 xi.main.second = function() {
