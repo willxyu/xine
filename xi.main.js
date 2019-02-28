@@ -41,6 +41,7 @@ xi.main.first = function() {
   // Evaluate XINE-0
   //   w/o XINE-0, Request & await approval, or
   //   second()
+  var Q = []
   var p = $.when(1)
       p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' }) 
          }).then(function(datum) {
@@ -49,6 +50,14 @@ xi.main.first = function() {
          }).then(function(datum) {
            try { eval(datum) } catch(err) { console.log(err) }
          })
+  for (var i = 0; i < xi.main.dependencies.length; i++) {
+    let m = xi.main.dependencies[i]
+    p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + m.url }) }).then(function(data) {
+      m.script = data
+      Q.push(m)
+    })
+  }
+  p.then(function() { console.log(Q) }
 }
 
 xi.main.second = function() {
