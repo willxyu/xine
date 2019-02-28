@@ -65,7 +65,9 @@ xi.main.first = function() {
   p.then(function() { xi.main.Q = Q })
   p.then(function() {
     var xin = client.get_variable('XINE-0')
-    console.log(xin)
+    if (typeof xin == 'undefined') {
+      xi.load.options()
+    } else { xi.main.second() }
   })
 }
 
