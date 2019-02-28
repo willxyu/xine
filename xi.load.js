@@ -12,7 +12,7 @@ xi.load.init = function() {
   rules += '.xil-content, .xil-cover {width: calc(100% - 6px - 6px); height: calc(100% - 7px - 7px); }\n'
   rules += '.xil-content, .xil-cover {position: absolute; left: 50%; top: 50%; transform: translate( -50%, -50%); }\n'
   rules += '.xil-content {border-top, border-bottom: 1px solid rgba(47, 142, 123, 1); }\n'
-  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.35) 0%,rgba(47,137,143,0.13) 47%, rgba(88,166,212,0.45) 100%); }\n'
+  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.35) 0%,rgba(47,137,143,0.13) 67%, rgba(88,166,212,0.45) 100%); }\n'
   rules += '.xil-cover   {background: rgba(1,1,1,1); }\n'
   rules += '.xil-top-right {position: absolute; right: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-top-left {position: absolute; left: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
@@ -23,7 +23,8 @@ xi.load.init = function() {
   rules += '.xil-main {display: none; position: absolute; top: 34%; left: 50%; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: rgba(9, 12, 15, 1); text-shadow: -1px 0 rgba(87, 142, 123, 1), 0 1px rgba(67, 152, 113, 1), 1px 0 rgba(47, 152, 103, 1), 0 -1px rgba(27, 142, 93, 1); }\n'
   rules += '@import url("https://fonts.googleapis.com/css?family=Dosis");'
-  rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(1,1,1,1); }\n'
+  rules += '.xil-updates {position: absolute; top: 55%; left: 50%; transform: translate( -50%, -50% ); }\n'
+  rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
