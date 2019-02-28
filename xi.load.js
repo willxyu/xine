@@ -41,6 +41,7 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   d += '</div>'
+  $('.xil-container').remove()
   $('body').append(d)
   $('#xil-'+name+'-X.xil-main')
     .show(130, 'swing')
