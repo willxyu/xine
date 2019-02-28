@@ -19,8 +19,8 @@ xi.load.init = function() {
   rules += '.xil-bottom-left {position: absolute; left: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   
   rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 510px; height: 270px; transform: translate( -50%, -50% ); }\n'
-  rules += '.xil-main {display: none; position: absolute; top: 43%; left: 50%; transform: translate( -50%, -50% ); }\n'
-  rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: rgba(9, 46, 88, 0.97); text-shadow: -1px 0 rgba(87, 142, 123, 1), 0 1px rgba(67, 152, 113, 1), 1px 0 rgba(47, 152, 103, 1), 0 -1px rgba(27, 142, 93, 1); }\n'
+  rules += '.xil-main {display: none; position: absolute; top: 37%; left: 50%; transform: translate( -50%, -50% ); }\n'
+  rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: rgba(9, 33, 55, 0.97); text-shadow: -1px 0 rgba(87, 142, 123, 1), 0 1px rgba(67, 152, 113, 1), 1px 0 rgba(47, 152, 103, 1), 0 -1px rgba(27, 142, 93, 1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -53,7 +53,7 @@ xi.load.init = function() {
   $('#xil-'+name+'-N.xil-main')
     // .show(560, 'swing')
     .fadeIn({duration: 560, easing: 'swing'})
-    .animate({ left: "+=10" }, 2100 )
+    .animate({ left: "+=20" }, 2100 )
   $('#xil-'+name+'-E.xil-main')
     // .show(790, 'swing')
     .fadeIn({duration: 790, easing: 'swing'})
