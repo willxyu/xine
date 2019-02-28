@@ -31,7 +31,7 @@ xi.load.init = function() {
   rules += '.checkmark {position:absolute; top:0; left:0; height:23px; width:23px; background-color:#eee; }\n'
   rules += '.xil-checkbox:hover input ~ .checkmark {background-color: #ccc; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark {background-color: #2196F3; }\n'
-  rules += '.checkmark:after {content:''; position:absolute; display:none; }\n'
+  rules += '.checkmark:after {content:""; position:absolute; display:none; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
   rules += '.xil-checkbox .checkmark:after {left:9px; top:4px; width:5px; height:10px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
 
