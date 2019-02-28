@@ -11,7 +11,7 @@ xi.load.init = function() {
   rules += '.xil-container {width: 560px; height: 310px; }\n'
   rules += '.xil-content {width: calc(100% - 6px - 6px); height: calc(100% - 7px - 7px); }\n'
   rules += '.xil-content {border-top, border-bottom: 1px solid rgba(47, 142, 123, 1); }\n'
-  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.45) 0%,rgba(47,137,143,0.23) 87%, rgba(125,185,232,0.45) 100%); }\n'
+  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.65) 0%,rgba(47,137,143,0.43) 47%, rgba(88,166,212,0.75) 100%); }\n'
   rules += '.xil-content {position: absolute; left: 50%; top: 50%; transform: translate( -50%, -50%); }\n'
   rules += '.xil-top-right {position: absolute; right: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-top-left {position: absolute; left: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
@@ -58,6 +58,8 @@ xi.load.init = function() {
     // .show(790, 'swing')
     .fadeIn({duration: 790, easing: 'swing'})
     .animate({ left: "+=50" }, 1800 )
+  $('.xil-main')
+    .animate({ top: "-=40" }, 1100 )
 }
 
 xi.load.update = function(msg) {
