@@ -1,73 +1,64 @@
-// System distribution
-//  xi.nxs      > Initializer
-//  xi.main.js  > Github-side code for XINE, imported & run within "window"
-//  xine.nxs    > Amalgamated Nexus-side code for XINE, imported & run within "Nexus"
-//  xine-custom > User-specified overwrites of XINE
-
-/*
-  xi main
-  xi util
-  xi loader
-  xi quanta
-  xi fast
-  xi gmcp
-
-  xine main
-  xine opts
-  xine misc
-  
-  xine scroll
-  
-  xine shml
-  xine colors
-  xine mono
-  
-  xine ndb
-  xine ndb chats
-  xine ndb starmourn
-  
-  xine starmourn ui
-    interface
-    datasheet
-  xine starmourn basher
+/* Distribution
+     XINI as XINE loader            (.nxs)
+     xi.main.js as XI Header         (.github)
+     xine.main.nxs.js as XINE Header (.github)
+     XINE as XINE Main               (.nxs)
+     XCUS as XINE Custom             (.nxs)
  */
 
-// packets
-//  - [xim] - main
-//  - [xiu] - utils, display, trigger-test, inline-js
-//  - [xis] - shtml
-//  - [xix] - uxtem, [templates], inc monospec, reskin, game-specific windows<tab/nontab configs>
-//  - [xig] - gmcpf
+/* Workflow:
+     Detail internal options for xi.main.js
+     Detail .github files for download
+     Detail .github files for default installment
+     Define initiation routine
+       Download debugging routine
+       Download major utilities
+       Download other .github files
+       Check for XINE-0
+       Request approval (bypass if XINE-0)
+ */
 
 xi      = typeof xi      != 'undefined' ? xi      : {}
 xi.main = typeof xi.main != 'undefined' ? xi.main : {}
-xi.opts = typeof xi.opts != 'undefined' ? xi.opts : {}
 
-xi.opts.debugTier = 5 // default debug tier
-xi.opts.debug     = 3 // threshold (print any debug message above "3")
-xi.opts.vebug     = false
+xi.main.dependencyPrefix = 'https://raw.githubusercontent.com/willxyu/xine/master/'
+xi.main.dependencies = [
+  {default: true,  url: 'xi.util.js',         desc: '', }, 
+  {default: true,  url: 'xi.quanta.js',       desc: '', }, 
+  {default: false, url: 'xi.fast.js',         desc: '', }, 
+  {default: true,  url: 'xi.gmcp.js',         desc: '', }, 
+  {default: true,  url: 'xine.main.nxs.js',   desc: '', }, 
+  {default: false, url: 'xine.scroll.nxs.js', desc: '', }, 
+  {default: true,  url: 'xine.shtml.nxs.js',  desc: '', }, 
+  {default: true,  url: 'xine.alias.nxs.js',  desc: '', }, 
+]
 
-xi.main.debug = function(msg, tier, masked) {
-  var tier = tier
-  if (typeof xi.opts.debugTier == 'number') { tier = xi.opts.debugTier }
-  if (typeof tier == 'undefined') { tier = 3 }
-  if (xi.opts.debug && tier > xi.opts.debug) {
-   console.log(msg)
-   if (xi.opts.vebug && !masked) { xi.write(msg) }
-  }
+xi.main.first = function() {
+  // First download & define debugging routine
+  // Then download & define major utilities
+  // Then download other .github files
+  // Then request XINE-0
+  // Evaluate XINE-0
+  //   w/o XINE-0, Request & await approval, or
+  //   second()
+  var p = $.when(1)
+      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' }) 
+         }).then(function(datum) {
+           console.log(datum)
+         }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' })
+                             
+         }).then(function(datum) {
+           console.log(datum)
+         })
 }
 
-xi.main.dependencies = [
- 'https://raw.githubusercontent.com/willxyu/xine/master/xi.util.js',
- 'https://raw.githubusercontent.com/willxyu/xine/master/xi.quanta.js',
- // 'https://raw.githubusercontent.com/willxyu/xine/master/xi.fast.js', // No faster than current Nexus implementation
- 'https://raw.githubusercontent.com/willxyu/xine/master/xi.gmcp.js',
- 'https://raw.githubusercontent.com/willxyu/xine/master/xine.main.nxs.js',
- 'https://raw.githubusercontent.com/willxyu/xine/master/xine.scroll.nxs.js',
- 'https://raw.githubusercontent.com/willxyu/xine/master/xine.shtml.nxs.js',
- 'https://raw.githubusercontent.com/willxyu/xine/master/xine.alias.nxs.js',
- // 'https://raw.githubusercontent.com/willxyu/xine/master/xine.ytube.nxs.js',
-]
+xi.main.second = function() {
+  // When approved or XINE-0 bypassed
+  // Remove XINE
+  // Run .github files
+  // Execute XINE
+  // Execute XCUS
+}
 
 xi.main.sequentialLoad = function() {
   var p = $.when(1)
@@ -96,4 +87,4 @@ xi.main.initiate = function() {
   if (client.package_exists("xine custom") != 0) { client.send_direct("xine custom") }
 }
 
-xi.main.initiate()
+// xi.main.initiate()
