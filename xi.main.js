@@ -46,7 +46,6 @@ xi.main.first = function() {
          }).then(function(datum) {
            console.log(datum)
          }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' })
-                             
          }).then(function(datum) {
            console.log(datum)
          })
@@ -59,6 +58,8 @@ xi.main.second = function() {
   // Execute XINE
   // Execute XCUS
 }
+
+xi.main.first()
 
 xi.main.sequentialLoad = function() {
   var p = $.when(1)
