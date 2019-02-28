@@ -13,14 +13,17 @@ xi.load.init = function() {
   rules += '.xil-content {border-top, border-bottom: 1px solid rgba(47, 142, 123, 1); }\n'
   rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.65) 0%,rgba(47,137,143,0.43) 47%, rgba(88,166,212,0.75) 100%); }\n'
   rules += '.xil-content {position: absolute; left: 50%; top: 50%; transform: translate( -50%, -50%); }\n'
+  rules += '.xil-content::before {background: rgba(1,1,1,1); }\n'
   rules += '.xil-top-right {position: absolute; right: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-top-left {position: absolute; left: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-bottom-right {position: absolute; right: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-bottom-left {position: absolute; left: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   
   rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 510px; height: 270px; transform: translate( -50%, -50% ); }\n'
-  rules += '.xil-main {display: none; position: absolute; top: 37%; left: 50%; transform: translate( -50%, -50% ); }\n'
+  rules += '.xil-main {display: none; position: absolute; top: 34%; left: 50%; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: rgba(9, 33, 55, 0.97); text-shadow: -1px 0 rgba(87, 142, 123, 1), 0 1px rgba(67, 152, 113, 1), 1px 0 rgba(47, 152, 103, 1), 0 -1px rgba(27, 142, 93, 1); }\n'
+  rules += '@import url("https://fonts.googleapis.com/css?family=Dosis");'
+  rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(1,1,1,1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -34,10 +37,11 @@ xi.load.init = function() {
   d += '<div id="xil-'+name+'-bottom-left"  class="xil-bottom-left" ></div>'
   d += '<div id="xil-'+name+'-content"      class="xil-content"     >'
   d += '<div id="xil-'+name+'-text">'
-  d += '<div id="xil-'+name+'-E"  class="xil-main">E</div>'
-  d += '<div id="xil-'+name+'-N"  class="xil-main">N</div>'
-  d += '<div id="xil-'+name+'-I"  class="xil-main">I</div>'
-  d += '<div id="xil-'+name+'-X"  class="xil-main">X</div>'
+  d += '<div id="xil-'+name+'-E"            class="xil-main">E</div>'
+  d += '<div id="xil-'+name+'-N"            class="xil-main">N</div>'
+  d += '<div id="xil-'+name+'-I"            class="xil-main">I</div>'
+  d += '<div id="xil-'+name+'-X"            class="xil-main">X</div>'
+  d += '<div id="xil-'+name+'-updates"      class="xil-updates"></div>'
   d += '</div>'
   d += '</div>'
   d += '</div>'
@@ -61,7 +65,7 @@ xi.load.init = function() {
 }
 
 xi.load.update = function(msg) {
-
+  $('.xil-updates').text(msg)
 }
 
 xi.load.remove = function() {
