@@ -18,6 +18,8 @@ xi.load.init = function() {
   rules += '.xil-bottom-right {position: absolute; right: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-bottom-left {position: absolute; left: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   
+  rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 560px; height: 310px; }\n'
+  
   $('.' + classr).remove()
   inject(rules)
 
