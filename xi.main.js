@@ -60,7 +60,7 @@ xi.main.first = function() {
   for (var i = 0; i < xi.main.dependencies.length; i++) {
     let m = xi.main.dependencies[i]
     p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + m.url + '?v=' + new Date().getTime() }) })
-         .then(function(data) { m.script = data; Q.push(m) })
+         .then(function(data) { m.script = data; Q.push(m); xi.load.update('Downloaded ' + m.url + '.'); })
   }
   p.then(function() { xi.main.Q = Q })
   p.then(function() {
