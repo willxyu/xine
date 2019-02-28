@@ -32,6 +32,14 @@ xi.main.dependencies = [
   {default: true,  url: 'xine.alias.nxs.js',  desc: '', }, 
 ]
 
+xi.main.zero = function() {
+  var p = $.when(1)
+      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.load.js' + '?v=' + new Date().getTime() })
+         }).then(function(datum) {
+           try { eval(datum) } catch(err) { console.log(err) }
+         })
+}
+
 xi.main.first = function() {
   // First download & define debugging routine
   // Then download & define major utilities
@@ -42,10 +50,7 @@ xi.main.first = function() {
   //   second()
   var Q = []
   var p = $.when(1)
-      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.load.js' + '?v=' + new Date().getTime() })
-         }).then(function(datum) {
-           try { eval(datum) } catch(err) { console.log(err) }
-         }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' + '?v=' + new Date().getTime() }) 
+      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' + '?v=' + new Date().getTime() }) 
          }).then(function(datum) {
            try { eval(datum) } catch(err) { console.log(err) }
          }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' + '?v=' + new Date().getTime() })
@@ -72,4 +77,4 @@ xi.main.second = function() {
   // Execute XCUS
 }
 
-xi.main.first()
+xi.main.zero()
