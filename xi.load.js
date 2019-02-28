@@ -43,16 +43,16 @@ xi.load.init = function() {
   d += '</div>'
   $('body').append(d)
   $('#xil-'+name+'-X.xil-main')
-    .show(300)
+    .show(130, 'swing')
     .animate({ left: "-=50" }, 1800 )
   $('#xil-'+name+'-I.xil-main')
-    .show(450)
+    .show(340, 'swing')
     .animate({ left: "-=20" }, 1800 )
   $('#xil-'+name+'-N.xil-main')
-    .show(570)
+    .show(560, 'swing')
     .animate({ left: "+=10" }, 1800 )
   $('#xil-'+name+'-E.xil-main')
-    .show(680)
+    .show(790, 'swing')
     .animate({ left: "+=50" }, 1800 )
 }
 
