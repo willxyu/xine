@@ -5,7 +5,7 @@ xi.load = typeof xi.load != 'undefined' ? xi.load : {}
 
 xi.load.init = function() {
   var classr = 'xi-load'
-  var inject = function(rule) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>' }
+  var inject = function(rule) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
 
   var rules = ''
   rules += '.xil-container {width: 560px; height: 310px; }\n'
