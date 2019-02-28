@@ -20,7 +20,7 @@ xi.load.init = function() {
   
   rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 510px; height: 270px; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-main {display: none; position: absolute; top: 50%; left: 50%; transform: translate( -50%, -50% ); }\n'
-  rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: rgba(1,1,1,0); text-shadow: -1px 0 rgba(47, 142, 123, 1), 0 1px rgba(47, 142, 123, 1), 1px 0 rgba(47, 142, 123, 1), 0 -1px rgba(47, 142, 123, 1); }\n'
+  rules += '.xil-main {font-family: "Lucida", sans-serif; font-size: 42pt; color: transparent; text-shadow: -1px 0 rgba(47, 142, 123, 1), 0 1px rgba(47, 142, 123, 1), 1px 0 rgba(47, 142, 123, 1), 0 -1px rgba(47, 142, 123, 1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -42,10 +42,18 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   $('body').append(d)
-  $('#xil-'+name+'-X.xil-main').show('slow')
-  $('#xil-'+name+'-I.xil-main').show('slow')
-  $('#xil-'+name+'-N.xil-main').show('slow')
-  $('#xil-'+name+'-E.xil-main').show('slow')
+  $('#xil-'+name+'-X.xil-main')
+    .show('slow')
+    .animate({ left: "-=50" }, 1800 )
+  $('#xil-'+name+'-I.xil-main')
+    .show('slow')
+    .animate({ left: "-=20" }, 1800 )
+  $('#xil-'+name+'-N.xil-main')
+    .show('slow')
+    .animate({ left: "+=10" }, 1800 )
+  $('#xil-'+name+'-E.xil-main')
+    .show('slow')
+    .animate({ left: "+=40" }, 1800 )
 }
 
 xi.load.update = function(msg) {
