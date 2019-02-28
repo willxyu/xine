@@ -18,7 +18,10 @@ xi.load.init = function() {
   rules += '.xil-bottom-right {position: absolute; right: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-bottom-left {position: absolute; left: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   
-  rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 560px; height: 310px; }\n'
+  rules += '#xil-loader {position: absolute; left: 50%; top: 50%; width: 510px; height: 270px; transform: translate( -50%, -50% ); }\n'
+  rules += '@import url("https://fonts.googleapis.com/css?family=Dosis");'
+  rules += '.xil-main {display: none; position: absolute; top: 50%; left: 50%; transform: translate( -50%, -50% ); }\n'
+  rules += '.xil-main {font-family: "Dosis", sans-serif; font-size: 42pt; }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -32,14 +35,18 @@ xi.load.init = function() {
   d += '<div id="xil-'+name+'-bottom-left"  class="xil-bottom-left" ></div>'
   d += '<div id="xil-'+name+'-content"      class="xil-content"     >'
   d += '<div id="xil-'+name+'-text">'
-  d += '<div id="xil-'+name+'-E">E</div>'
-  d += '<div id="xil-'+name+'-N">N</div>'
-  d += '<div id="xil-'+name+'-I">I</div>'
-  d += '<div id="xil-'+name+'-X">X</div>'
+  d += '<div id="xil-'+name+'-E"  class="xil-main">E</div>'
+  d += '<div id="xil-'+name+'-N"  class="xil-main">N</div>'
+  d += '<div id="xil-'+name+'-I"  class="xil-main">I</div>'
+  d += '<div id="xil-'+name+'-X"  class="xil-main">X</div>'
   d += '</div>'
   d += '</div>'
   d += '</div>'
   $('body').append(d)
+  $('#xil-'+loader+'-X.xil-main').show('slow')
+  $('#xil-'+loader+'-I.xil-main').show('slow')
+  $('#xil-'+loader+'-N.xil-main').show('slow')
+  $('#xil-'+loader+'-E.xil-main').show('slow')
 }
 
 xi.load.update = function(msg) {
