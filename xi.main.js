@@ -23,7 +23,6 @@ xi.main = typeof xi.main != 'undefined' ? xi.main : {}
 
 xi.main.dependencyPrefix = 'https://raw.githubusercontent.com/willxyu/xine/master/'
 xi.main.dependencies = [
-  {default: true,  url: 'xi.util.js',         desc: '', }, 
   {default: true,  url: 'xi.quanta.js',       desc: '', }, 
   {default: false, url: 'xi.fast.js',         desc: '', }, 
   {default: true,  url: 'xi.gmcp.js',         desc: '', }, 
@@ -43,7 +42,10 @@ xi.main.first = function() {
   //   second()
   var Q = []
   var p = $.when(1)
-      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' + '?v=' + new Date().getTime() }) 
+      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.load.js' + '?v=' + new Date().getTime() })
+         }).then(function(datum) {
+           try { eval(datum) } catch(err) { console.log(err) }
+         }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' + '?v=' + new Date().getTime() }) 
          }).then(function(datum) {
            try { eval(datum) } catch(err) { console.log(err) }
          }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' + '?v=' + new Date().getTime() })
@@ -71,32 +73,3 @@ xi.main.second = function() {
 }
 
 xi.main.first()
-
-xi.main.sequentialLoad = function() {
-  var p = $.when(1)
-  xi.main.dependencies.forEach(function(item, index) {
-    let a = item
-    p = p.then(function() {
-      return $.ajax({ url: a + '?v=' + new Date().getTime() }).done(function(data) {
-        xi.main.debug('Attempting eval(data) for ' + a + '.')
-        try {
-          eval(data)
-        } catch(err) {
-          xi.main.debug(err, 1) 
-        }
-      })
-    })
-  })
-  
-  p = p.then(function() { if (typeof send_command == 'function') { send_command('xine') } })
-}
-
-xi.main.initiate = function() {
-  var c = client
-  if (client.package_exists("xine") != 0) { client.package_remove("xine") }
-  xi.main.sequentialLoad()
-  if (client.package_exists("xine") != 0) { client.send_direct("xine") }
-  if (client.package_exists("xine custom") != 0) { client.send_direct("xine custom") }
-}
-
-// xi.main.initiate()
