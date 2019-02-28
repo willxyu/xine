@@ -43,21 +43,23 @@ xi.main.first = function() {
   //   second()
   var Q = []
   var p = $.when(1)
-      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' }) 
+      p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.util.js' + '?v=' + new Date().getTime() }) 
          }).then(function(datum) {
            try { eval(datum) } catch(err) { console.log(err) }
-         }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' })
+         }).then(function() { return $.ajax({url: xi.main.dependencyPrefix + 'xi.mend.js' + '?v=' + new Date().getTime() })
          }).then(function(datum) {
            try { eval(datum) } catch(err) { console.log(err) }
          })
   for (var i = 0; i < xi.main.dependencies.length; i++) {
     let m = xi.main.dependencies[i]
-    p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + m.url }) }).then(function(data) {
-      m.script = data
-      Q.push(m)
-    })
+    p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + m.url + '?v=' + new Date().getTime() }) })
+         .then(function(data) { m.script = data; Q.push(m) })
   }
-  p.then(function() { console.log(Q) })
+  p.then(function() { xi.main.Q = Q })
+  p.then(function() {
+    var xin = client.get_variable('XINE-0')
+    console.log(xin)
+  })
 }
 
 xi.main.second = function() {
