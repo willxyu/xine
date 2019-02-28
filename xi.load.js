@@ -43,10 +43,10 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   $('body').append(d)
-  $('#xil-'+loader+'-X.xil-main').show('slow')
-  $('#xil-'+loader+'-I.xil-main').show('slow')
-  $('#xil-'+loader+'-N.xil-main').show('slow')
-  $('#xil-'+loader+'-E.xil-main').show('slow')
+  $('#xil-'+name+'-X.xil-main').show('slow')
+  $('#xil-'+name+'-I.xil-main').show('slow')
+  $('#xil-'+name+'-N.xil-main').show('slow')
+  $('#xil-'+name+'-E.xil-main').show('slow')
 }
 
 xi.load.update = function(msg) {
