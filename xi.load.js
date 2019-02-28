@@ -53,11 +53,11 @@ xi.load.init = function() {
   $('#xil-'+name+'-N.xil-main')
     // .show(560, 'swing')
     .fadeIn({duration: 560, easing: 'swing'})
-    .animate({ left: "+=20" }, 2100 )
+    .animate({ left: "+=10" }, 2100 )
   $('#xil-'+name+'-E.xil-main')
     // .show(790, 'swing')
     .fadeIn({duration: 790, easing: 'swing'})
-    .animate({ left: "+=50" }, 1800 )
+    .animate({ left: "+=50" }, 1800, 'swing', xi.main.first )
 }
 
 xi.load.update = function(msg) {
