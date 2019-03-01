@@ -14,8 +14,8 @@ xi.load.init = function() {
   rules += '.xil-content, .xil-cover {width: calc(100% - 6px - 6px); height: calc(100% - 7px - 7px); }\n'
   rules += '.xil-content, .xil-cover {position: absolute; left: 50%; top: 50%; transform: translate( -50%, -50%); }\n'
   rules += '.xil-content {border-top, border-bottom: 1px solid rgba(47, 142, 123, 1); }\n'
-  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.35) 0%,rgba(47,137,143,0.13) 67%, rgba(88,166,212,0.45) 100%); }\n'
-  rules += '.xil-cover   {background: linear-gradient(135deg, rgba(0,0,0,0.98) 0%,rgba(0,0,0,0.97) 41%,rgba(0,0,0,0.88) 100%); }\n'
+  rules += '.xil-content {background: linear-gradient(45deg, rgba(30,112,145,0.35) 0%,rgba(47,137,143,0.13) 67%, rgba(88,166,212,0.25) 100%); }\n'
+  rules += '.xil-cover   {background: linear-gradient(135deg, rgba(0,0,0,0.98) 0%,rgba(0,0,0,0.97) 41%,rgba(0,0,0,0.94) 100%); }\n'
   rules += '.xil-top-right {position: absolute; right: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-top-left {position: absolute; left: 0%; top: 0%; width: 11px; height: 15px; border-top: 2px solid rgba(71, 224, 193, 1); border-left: 2px solid rgba(71, 224, 193, 1); }\n'
   rules += '.xil-bottom-right {position: absolute; right: 0%; bottom: 0%; width: 11px; height: 15px; border-bottom: 2px solid rgba(71, 224, 193, 1); border-right: 2px solid rgba(71, 224, 193, 1); }\n'
@@ -45,6 +45,10 @@ xi.load.init = function() {
   rules += '#xil-enact:before {content:"  "; }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
+  rules += '.xil-hovered {position:absolute; right:7px; top:0px; height:100%; width:210px; }\n'
+  rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
+  rules += '.xil-hovered {background:rgba(1,1,1,1); font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
+  
   $('.' + classr).remove()
   inject(rules)
 
@@ -65,6 +69,7 @@ xi.load.init = function() {
   d += '<div id="xil-'+name+'-updates"      class="xil-updates"></div>'
   d += '</div>'
   d += '</div>'
+  d += '<div id="xil-'+name+'-hovered"      class="xil-hovered"></div>'
   d += '</div>'
   $('body').append(d)
   $('#xil-'+name+'-X.xil-main')
