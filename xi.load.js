@@ -103,8 +103,8 @@ xi.load.options = function() {
   d += '<div id="xil-'+name+'-options">'
   for (var i = 0; i < m.length; i++) {
     var c = ''
-    if (xin instanceof Array && xin.indexOf(m[i].url) != -1) {
-        c = 'checked="checked"'
+    if (xin instanceof Array) {
+      if (xin.indexOf(m[i].url) != -1) { c = 'checked="checked"' }
     } else if (m[i].default) {
         c = 'checked="checked"'
         o.push(m[i].url) }
