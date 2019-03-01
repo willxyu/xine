@@ -47,7 +47,7 @@ xi.load.init = function() {
   rules += '#xil-enact:before {content:"  "; }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
-  rules += '.xil-hovered {position:absolute; right:-170px; top:7px; height:calc(100% - 8px - 8px); width:180px; z-index: -1; display:none; }\n'
+  rules += '.xil-hovered {position:absolute; right:-170px; top:7px; height:calc(100% - 8px - 8px); width:180px; z-index: -1; }\n'
   rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
   rules += '.xil-hovered {background:rgba(1,1,1,1); }\n'
   rules += '#xil-hoveredText {font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
@@ -75,6 +75,7 @@ xi.load.init = function() {
   d += '<div id="xil-'+name+'-hovered"      class="xil-hovered"><div id="xil-hoveredText"></div></div>'
   d += '</div>'
   $('body').append(d)
+  $('#xil-hovered').hide()
   $('#xil-'+name+'-X.xil-main')
     .fadeIn({duration: 130, easing: 'swing'})
     .animate({ left: "-=50" }, 2700 )
@@ -108,7 +109,7 @@ xi.load.options = function() {
   var m = clone(xi.main.dependencies)
   var o = []
   var d = ''
-  d += '<div id="xil-'+name+'-options">'
+  d += '<div id="xil-'+name+'-options" onmouseleave="xi.load.unmoused()">'
   for (var i = 0; i < m.length; i++) {
     var c = ''
     if (xin instanceof Array) {
@@ -167,6 +168,10 @@ xi.load.moused = function(script) {
     }
   }
   $('#xil-hovered').show()
+}
+
+xi.load.unmoused = function() {
+  $('#xil-hovered').hide()
 }
 
 xi.load.init()
