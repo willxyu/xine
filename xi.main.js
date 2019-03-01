@@ -62,14 +62,7 @@ xi.main.first = function() {
     p = p.then(function() { return $.ajax({url: xi.main.dependencyPrefix + m.url + '?v=' + new Date().getTime() }) })
          .then(function(data) { m.script = data; Q.push(m); xi.load.update('Downloaded ' + m.url + '.'); })
   }
-  p.then(function() { xi.main.Q = Q })
-  p.then(function() {
-    var xin  = client.get_variable('XINE-0')
-    var auto = client.get_variable('XINE-A')
-    if (typeof xin == 'undefined' || !auto) {
-      xi.load.options()
-    } else { xi.main.second() }
-  })
+  p.then(function() { xi.main.Q = Q; xi.load.options() })
 }
 
 xi.main.second = function() {
