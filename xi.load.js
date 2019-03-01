@@ -100,7 +100,8 @@ xi.load.options = function() {
   d += '</div>'
   d = '<div id="xil-options">' + d + '</div>'
   $('.xil-content').append(d)
-  $('#xil-loader-text').animate({ left: "-=140" }, 1300)
+  $('.xil-main').animate({ left: "-=140" }, 1300)
+  $('.xil-updates').animate({ left: "-=140" }, 1300)
   $('#xil-options').show(1600)
 }
 
