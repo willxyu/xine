@@ -45,7 +45,7 @@ xi.load.init = function() {
   rules += '#xil-enact:before {content:"  "; }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
-  rules += '.xil-hovered {position:absolute; right:-7px; top:7px; height:calc(100% - 7px - 7px); width:180px; z-index: -1; }\n'
+  rules += '.xil-hovered {position:absolute; right:-177px; top:7px; height:calc(100% - 8px - 8px); width:180px; z-index: -1; }\n'
   rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
   rules += '.xil-hovered {background:rgba(1,1,1,1); font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
   
