@@ -4,6 +4,8 @@ xi      = typeof xi      != 'undefined' ? xi      : {}
 xi.load = typeof xi.load != 'undefined' ? xi.load : {}
 
 xi.load.init = function() {
+  $('.xil-container').remove()
+  
   var classr = 'xi-load'
   var inject = function(rule) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
 
@@ -31,7 +33,7 @@ xi.load.init = function() {
   rules += '.xil-checkbox input {position:absolute; opacity:0; cursor:pointer; height:0; width:0; }\n'
   rules += '.checkmark {position:absolute; top:0; left:0; height:16px; width:16px; background-color:#eee; }\n'
   rules += '.xil-checkbox:hover input ~ .checkmark {background-color: #ccc; }\n'
-  rules += '.xil-checkbox input:checked ~ .checkmark {background-color:rgba(71, 224, 193, 1); }\n' // #2196F3; 
+  rules += '.xil-checkbox input:checked ~ .checkmark {background-color:rgba(49, 178, 152, 1); }\n' // #2196F3; 
   rules += '.checkmark:after {content:""; position:absolute; display:none; }\n'
   rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
   rules += '.xil-checkbox .checkmark:after {left:5px; top:2px; width:4px; height:7px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
@@ -62,7 +64,6 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   d += '</div>'
-  $('.xil-container').remove()
   $('body').append(d)
   $('#xil-'+name+'-X.xil-main')
     .fadeIn({duration: 130, easing: 'swing'})
