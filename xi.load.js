@@ -29,6 +29,8 @@ xi.load.init = function() {
   rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
   
   rules += '#xil-options {position:absolute; right:0px; top:15px; width:40%; height:100%; overflow-y:scroll; display:none; }\n'
+  rules += '#xil-options::-webkit-scrollbar {width:0px; background:transparent; }\n'
+  rules += '#xil-options::-webkit-scrollbar {background: #FF0000; }\n'  
   rules += '.xil-checkbox {font-family:"Lucida"; display:block; position:relative; padding-left:23px; margin-bottom:4px; cursor:pointer; font-size:12px; user-select:none; line-height:16px; }\n'
   rules += '.xil-checkbox input {position:absolute; opacity:0; cursor:pointer; height:0; width:0; }\n'
   rules += '.checkmark {position:absolute; top:0; left:0; height:16px; width:16px; background-color:#eee; }\n'
@@ -45,9 +47,10 @@ xi.load.init = function() {
   rules += '#xil-enact:before {content:"  "; }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
-  rules += '.xil-hovered {position:absolute; right:-177px; top:7px; height:calc(100% - 8px - 8px); width:180px; z-index: -1; }\n'
+  rules += '.xil-hovered {position:absolute; right:-170px; top:7px; height:calc(100% - 8px - 8px); width:180px; z-index: -1; display:none; }\n'
   rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
-  rules += '.xil-hovered {background:rgba(1,1,1,1); font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
+  rules += '.xil-hovered {background:rgba(1,1,1,1); }\n'
+  rules += '#xil-hoveredText {font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -69,7 +72,7 @@ xi.load.init = function() {
   d += '<div id="xil-'+name+'-updates"      class="xil-updates"></div>'
   d += '</div>'
   d += '</div>'
-  d += '<div id="xil-'+name+'-hovered"      class="xil-hovered"></div>'
+  d += '<div id="xil-'+name+'-hovered"      class="xil-hovered"><div id="xil-hoveredText"></div></div>'
   d += '</div>'
   $('body').append(d)
   $('#xil-'+name+'-X.xil-main')
@@ -113,7 +116,7 @@ xi.load.options = function() {
     } else if (m[i].default) {
         c = 'checked="checked"'
         o.push(m[i].url) }
-    d += '<label class="xil-checkbox">' + m[i].url
+    d += '<label class="xil-checkbox" onmouseover="xi.load.moused(\''+m[i].url+'\')">' + m[i].url
     d += '<input type="checkbox" ' + c + '>'
     d += '<span class="checkmark"></span></label>'
   }
@@ -152,6 +155,18 @@ xi.load.enact = function() {
   xi.main.second()
   // Close
   
+}
+
+xi.load.moused = function(script) {
+  if (!script) { $('#xil-hovered').hide(); return }
+  var m = clone(xi.main.dependencies)
+  for (var i = 0; i < m.length; i++) {
+    if (m[i].url == script) {
+      $('#xil-hoveredText).text(m[i].desc)
+      break
+    }
+  }
+  $('#xil-hovered').show()
 }
 
 xi.load.init()
