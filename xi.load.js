@@ -96,11 +96,14 @@ xi.load.remove = function() {
 xi.load.options = function() {
   var name = 'loader'
   var m = clone(xi.main.dependencies)
+  var o = []
   var d = ''
   d += '<div id="xil-'+name+'-options">'
   for (var i = 0; i < m.length; i++) {
     var c = ''
-    if (m[i].default) { c = 'checked="checked"' }
+    if (m[i].default) {
+        c = 'checked="checked"'
+        o.push(m[i].url) }
     d += '<label class="xil-checkbox">' + m[i].url
     d += '<input type="checkbox" ' + c + '>'
     d += '<span class="checkmark"></span></label>'
@@ -111,13 +114,26 @@ xi.load.options = function() {
   var e = ''
   e += '<div id="xil-autoload"><label class="xil-checkbox">Autoload on Startup?<input type="checkbox" checked="checked">'
   e += '<span class="checkmark"></span></label></div>'
-  e += '<div id="xil-enact">Enact & Close</div>'
+  e += '<div id="xil-enact" onclick="xi.load.enact()">Enact & Close</div>'
   $('.xil-content').append(e)
   $('.xil-main').animate({ left: "-=140" }, 1300)
   $('.xil-updates').hide(1300)
   $('#xil-options').show(1600)
   $('#xil-autoload').show(1600)
   $('#xil-enact').show(1600)
+}
+
+xi.load.enact = function() {
+  // Calculate changes, both enabled & dis-abled
+  var undo = []
+  // Retrieve saved / create new XINE-0
+  var xin  = client.get_variable('XINE-0')
+  var auto = client.get_variable('XINE-A')
+  // Enact differences
+  xi.main.undo(undo)
+  xi.main.second()
+  // Close
+  
 }
 
 xi.load.init()
