@@ -40,7 +40,7 @@ xi.load.init = function() {
 
   rules += '#xil-autoload, #xil-enact {font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); cursor:pointer; display:none; }\n'
   rules += '#xil-autoload {position:absolute; left:44px; top:49%; }\n'
-  rules += '#xil-enact {position:absolute; left:44px; top:calc(49% + 23px); transition:all 230ms; }\n'
+  rules += '#xil-enact {position:absolute; left:44px; top:calc(49% + 21px); transition:all 230ms; text-decoration: underline; }\n'
   rules += '#xil-enact:hover {color:rgba(71, 224, 193, 1); }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
