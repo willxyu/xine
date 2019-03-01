@@ -25,7 +25,7 @@ xi.main.dependencyPrefix = 'https://raw.githubusercontent.com/willxyu/xine/maste
 xi.main.dependencies = [
   {default: true,  url: 'xi.quanta.js',       desc: 'Allows performance measurement for Nexus. Use $(document).on("xiPerf") for packet performance. Variables include xi.perft & xi.perfa.', }, 
   {default: false, url: 'xi.fast.js',         desc: 'DO NOT USE. Incorporates fastdom.js to speed up Nexus.', }, 
-  {default: true,  url: 'xi.gmcp.js',         desc: 'Overwrites Nexus\' default GMCP functions. See Github for how to write your own GMCP implementation.', }, 
+  {default: true,  url: 'xi.gmcp.js',         desc: 'Overwrites Nexus default GMCP functions. See Github for how to write your own GMCP implementation.', }, 
   {default: true,  url: 'xine.main.nxs.js',   desc: '', }, 
   {default: false, url: 'xine.scroll.nxs.js', desc: '', }, 
   {default: true,  url: 'xine.shtml.nxs.js',  desc: 'Provides method to write to output with a single string incorporating spans.', }, 
