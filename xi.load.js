@@ -36,9 +36,9 @@ xi.load.init = function() {
   rules += '.xil-checkbox input:checked ~ .checkmark:after {display:block; }\n'
   rules += '.xil-checkbox .checkmark:after {left:5px; top:2px; width:4px; height:7px; border:solid white; border-width:0 3px 3px 0; transform: rotate(45deg); }\n'
 
-  rules += '#xil-autoload, #xil-enact {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
-  rules += '#xil-autoload {position:absolute; left:15px; top:65%; }\n'
-  rules += '#xil-enact {position:absolute; left:15px; top:calc(65% + 23px); }\n'
+  rules += '#xil-autoload, #xil-enact {font-family: "Lucida", sans-serif; font-size: 12px; color: rgba(125,125,125,1); cursor:pointer; display:none; }\n'
+  rules += '#xil-autoload {position:absolute; left:35px; top:45%; }\n'
+  rules += '#xil-enact {position:absolute; left:35px; top:calc(45% + 23px); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -112,6 +112,8 @@ xi.load.options = function() {
   $('.xil-main').animate({ left: "-=140" }, 1300)
   $('.xil-updates').hide(1300)
   $('#xil-options').show(1600)
+  $('#xil-autoload').show(1600)
+  $('#xil-enact').show(1600)
 }
 
 xi.load.init()
