@@ -64,8 +64,9 @@ xi.main.first = function() {
   }
   p.then(function() { xi.main.Q = Q })
   p.then(function() {
-    var xin = client.get_variable('XINE-0')
-    if (typeof xin == 'undefined') {
+    var xin  = client.get_variable('XINE-0')
+    var auto = client.get_variable('XINE-A')
+    if (typeof xin == 'undefined' || !auto) {
       xi.load.options()
     } else { xi.main.second() }
   })
