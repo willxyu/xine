@@ -47,7 +47,7 @@ xi.load.init = function() {
   rules += '#xil-enact:before {content:"  "; }\n'
   rules += '#xil-enact:hover:before {content:"» "; }\n'
   
-  rules += '.xil-hovered {position:absolute; right:-205px; top:7px; height:calc(100% - 8px - 8px); width:210px; z-index: -1; display:none; }\n'
+  rules += '.xil-hovered {position:absolute; right:-205px; top:7px; height:calc(100% - 8px - 8px); width:210px; }\n'
   rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
   rules += '.xil-hovered {background:rgba(1,1,1,1); }\n'
   rules += '#xil-hoveredText {margin-left:8px; font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
@@ -75,7 +75,7 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   $('body').append(d)
-  $('#xil-hovered').css('display','block')
+  $('#xil-hovered').css('display','none')
   $('#xil-'+name+'-X.xil-main')
     .fadeIn({duration: 130, easing: 'swing'})
     .animate({ left: "-=50" }, 2700 )
