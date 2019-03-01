@@ -162,7 +162,7 @@ xi.load.moused = function(script) {
   var m = clone(xi.main.dependencies)
   for (var i = 0; i < m.length; i++) {
     if (m[i].url == script) {
-      $('#xil-hoveredText).text(m[i].desc)
+      $('#xil-hoveredText').text(m[i].desc)
       break
     }
   }
