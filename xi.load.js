@@ -124,11 +124,18 @@ xi.load.options = function() {
 }
 
 xi.load.enact = function() {
-  // Calculate changes, both enabled & dis-abled
-  var undo = []
-  // Retrieve saved / create new XINE-0
+  // Retrieve saved XINE-0
   var xin  = client.get_variable('XINE-0')
   var auto = client.get_variable('XINE-A')
+  // Evalute Checkboxes
+  
+  // Calculate changes, both enabled & dis-abled
+  var undo = []
+  
+  // Save XINE-0
+  
+  // Save XINE-A
+  
   // Enact differences
   xi.main.undo(undo)
   xi.main.second()
