@@ -10,7 +10,7 @@ xi.load.init = function() {
   var inject = function(rule) { $('body').append('<div class="' + classr + '">&shy;<style>' + rule + '</style></div>') }
 
   var rules = ''
-  rules += '.xil-container {width: 560px; height: 310px; }\n'
+  rules += '.xil-container {width: 560px; height: 310px; z-index:50; }\n'
   rules += '.xil-content, .xil-cover {width: calc(100% - 6px - 6px); height: calc(100% - 7px - 7px); }\n'
   rules += '.xil-content, .xil-cover {position: absolute; left: 50%; top: 50%; transform: translate( -50%, -50%); }\n'
   rules += '.xil-content {border-top, border-bottom: 1px solid rgba(47, 142, 123, 1); }\n'
@@ -50,7 +50,7 @@ xi.load.init = function() {
   rules += '.xil-hovered {position:absolute; right:-205px; top:7px; height:calc(100% - 8px - 8px); width:210px; }\n'
   rules += '.xil-hovered {border-right:1px solid rgba(125,125,125,1); border-top:1px solid rgba(125,125,125,1); border-bottom:1px solid rgba(125,125,125,0.55); }\n'
   rules += '.xil-hovered {background:rgba(1,1,1,1); }\n'
-  rules += '#xil-hoveredText {margin-left:8px; font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
+  rules += '#xil-hoveredText {margin-left:8px; margin-right: 5px; font-family: "Lucida"; font-size:12px; color:rgba(125,125,125,1); }\n'
   
   $('.' + classr).remove()
   inject(rules)
@@ -75,7 +75,7 @@ xi.load.init = function() {
   d += '</div>'
   d += '</div>'
   $('body').append(d)
-  $('#xil-hovered').css('display','none')
+  $('.xil-hovered').css('display','none')
   $('#xil-'+name+'-X.xil-main')
     .fadeIn({duration: 130, easing: 'swing'})
     .animate({ left: "-=50" }, 2700 )
@@ -159,7 +159,7 @@ xi.load.enact = function() {
 }
 
 xi.load.moused = function(script) {
-  if (!script) { $('#xil-hovered').css('display','none'); return }
+  if (!script) { $('.xil-hovered').css('display','none'); return }
   var m = clone(xi.main.dependencies)
   for (var i = 0; i < m.length; i++) {
     if (m[i].url == script) {
@@ -167,11 +167,11 @@ xi.load.moused = function(script) {
       break
     }
   }
-  $('#xil-hovered').css('display','block')
+  $('.xil-hovered').css('display','block')
 }
 
 xi.load.unmoused = function() {
-  $('#xil-hovered').css('display','none')
+  $('.xil-hovered').css('display','none')
 }
 
 xi.load.init()
