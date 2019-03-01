@@ -26,7 +26,7 @@ xi.load.init = function() {
   rules += '.xil-updates {position: absolute; top: 55%; left: 50%; transform: translate( -50%, -50% ); }\n'
   rules += '.xil-updates {font-family: "Dosis", sans-serif; font-size: 9pt; color: rgba(125,125,125,1); }\n'
   
-  rules += '.xil-options {position:absolute; right:0px; width:40%; height:100%; overflow-y:scroll; }\n'
+  rules += '#xil-options {position:absolute; right:0px; width:40%; height:100%; overflow-y:scroll; display:none; }\n'
   rules += '.xil-checkbox {font-family:"Lucida"; display:block; position:relative; padding-left:23px; margin-bottom:4px; cursor:pointer; font-size:12px; user-select:none; line-height:16px; }\n'
   rules += '.xil-checkbox input {position:absolute; opacity:0; cursor:pointer; height:0; width:0; }\n'
   rules += '.checkmark {position:absolute; top:0; left:0; height:16px; width:16px; background-color:#eee; }\n'
@@ -100,7 +100,8 @@ xi.load.options = function() {
   d += '</div>'
   d = '<div id="xil-options">' + d + '</div>'
   $('.xil-content').append(d)
-  $('.xil-main').animate({ left: "-=200" }, 200)
+  $('#xil-loader-text').animate({ left: "-=140" }, 1300)
+  $('#xil-options').show(1600)
 }
 
 xi.load.init()
