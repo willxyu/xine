@@ -387,6 +387,7 @@ gmcpf.ireDisplaypopup = function(data) {
   client.display_gmcp_popup( data.id, data.element, data.src, $('<p/>').html(data.text), data.options, data.commands, data.allow_noshow) }
 
 gmcpf.ireDisplayohmap = function(data) {
+  console.log(data)
   if (!client.map_enabled()) { return }
   var res = {}
       res.ohmap = true
