@@ -155,7 +155,7 @@ xi.load.enact = function() {
   xi.main.undo(undo)
   xi.main.second()
   // Close
-  
+  xi.load.remove()
 }
 
 xi.load.moused = function(script) {
