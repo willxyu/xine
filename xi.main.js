@@ -73,4 +73,8 @@ xi.main.second = function() {
   // Execute XCUS
 }
 
+xi.main.undo = function(list) {
+
+}
+
 xi.main.zero()
