@@ -39,6 +39,12 @@ if (typeof client != 'undefined') {
          if (client.settings_window && client.settings_window.process_filelist)
              client.settings_window.process_filelist (list);
       }
+      if ((gmcp_method == "IRE.Display.Ohmap") && client.map_enabled()) {
+         var res = {};
+         res.ohmap = true;
+         res.start = (gmcp_args == "start");
+         return res;
+      }
 
       // The rest of GMCP we will provide specific event control
       $(document).trigger('gmcp-' + gmcp_method, [gmcp_args])
@@ -85,7 +91,7 @@ gmcpf.map = {
   ['IRE.Display.HidePopup']    : {use: 'original', original: 'ireDisplayhidepopup',  lean: 'leanIreDisplayhidepopup'  },
   ['IRE.Display.HideAllPopups']: {use: 'original', original: 'ireDisplayhidepopups', lean: 'leanIreDisplayhidepopups' },
   ['IRE.Display.Popup']        : {use: 'original', original: 'ireDisplaypopup',      lean: 'leanIreDisplaypopup'      },
-  ['IRE.Display.Ohmap']        : {use: 'original', original: 'ireDisplayohmap',      lean: 'leanIreDisplayohmap'      },
+  // ['IRE.Display.Ohmap']        : {use: 'original', original: 'ireDisplayohmap',      lean: 'leanIreDisplayohmap'      },
   ['IRE.Display.ButtonActions']: {use: 'original', original: 'ireDisplaybActions',   lean: 'leanIreDisplaybActions'   },
   ['Comm.Channel.Start']       : {use: 'original', original: 'commChannstart',       lean: 'leanCommChannstart'       },
   ['Comm.Channel.End']         : {use: 'original', original: 'commChannend',         lean: 'leanCommChannend'         },
@@ -564,7 +570,7 @@ gmcpf.ireTimeupdate = function(data) {
   for (var k in data) { GMCP.Time[k] = data[k] } }
   
 gmcpf.roominfo = function(data) {
-  console.log(data)
+  // console.log(data)
   setTimeout(function() {
     var map = client.mapper
     $('#div_room_description').html(data.desc.replace(/\n/g, '<br>'))
