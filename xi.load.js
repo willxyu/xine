@@ -98,6 +98,7 @@ xi.load.update = function(msg) {
 }
 
 xi.load.remove = function() {
+  var classr = 'xi-load'
   $('#xil-loader').remove()
   $('.' + classr).remove()
 }
