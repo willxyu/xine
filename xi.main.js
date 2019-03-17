@@ -71,6 +71,16 @@ xi.main.second = function() {
   // Run .github files
   // Execute XINE
   // Execute XCUS
+  
+  var Q = xi.main.Q
+  for (var i = 0; i < Q.length; i++) {
+    var t = Q[i]
+    if (t.default) {
+      try {
+       eval(t.script)
+      } catch(err) { console.log(err) }
+    }
+  }
 }
 
 xi.main.undo = function(list) {
