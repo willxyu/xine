@@ -387,7 +387,6 @@ gmcpf.ireDisplaypopup = function(data) {
   client.display_gmcp_popup( data.id, data.element, data.src, $('<p/>').html(data.text), data.options, data.commands, data.allow_noshow) }
 
 gmcpf.ireDisplayohmap = function(data) {
-  console.log(data)
   if (!client.map_enabled()) { return }
   var res = {}
       res.ohmap = true
@@ -565,6 +564,7 @@ gmcpf.ireTimeupdate = function(data) {
   for (var k in data) { GMCP.Time[k] = data[k] } }
   
 gmcpf.roominfo = function(data) {
+  console.log(data)
   setTimeout(function() {
     var map = client.mapper
     $('#div_room_description').html(data.desc.replace(/\n/g, '<br>'))
